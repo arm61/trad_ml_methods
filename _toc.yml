@@ -2,7 +2,13 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: content
+- file: decision_trees
+- file: gradient_boosting
+- file: clustering
+- file: dimensionality_reduction
+- file: bayesian_model_selection
   sections:
-    - file: markdown
-    - file: notebooks
+    - file: bayes_theorem
+    - file: bayesian_evidence
+    - file: nested_sampling
+    - file: bayes_exercise

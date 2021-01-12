@@ -12,3 +12,4 @@
     - file: bayesian_evidence
     - file: nested_sampling
     - file: bayes_exercise
+- file: zreferences.md

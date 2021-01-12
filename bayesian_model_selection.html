@@ -254,7 +254,7 @@
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All of the imports</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing relevant modules</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
@@ -265,8 +265,8 @@
 </div>
 <div class="section" id="bayesian-model-selection">
 <h1>Bayesian model selection<a class="headerlink" href="#bayesian-model-selection" title="Permalink to this headline">¶</a></h1>
-<p>Bayesian model selection is an analytical tool that we can use to compare models with different numbers of parameters, while integrating our physical understanding of the models to influence the analysis.
-For example, consider the following hypothetical <em>x,y</em>-data shown below (note that in addition to the data being manufactured so are the models dicussed below, but bare with me).</p>
+<p>Bayesian model selection is an analytical tool that we can use to compare models with different numbers of parameters while integrating our physical understanding of the models to influence the analysis.
+For example, consider the following hypothetical <em>x,y</em>-data that is shown below (note that in addition to the data being manufactured so are the models discussed below, but bear with me).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
@@ -304,40 +304,32 @@ Let’s find the likelihood for each of the models, as <span class="xref myst">d
 </div>
 </div>
 </div>
+<p>We will quickly visualise these two models to get a comparison.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt2</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f520841d910&gt;]
-</pre></div>
-</div>
-<img alt="_images/bayesian_model_selection_5_1.png" src="_images/bayesian_model_selection_5_1.png" />
+<img alt="_images/bayesian_model_selection_6_0.png" src="_images/bayesian_model_selection_6_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">popt</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">))</span> <span class="o">/</span> <span class="n">dy</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">dy</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="n">likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">model1</span><span class="p">,</span> <span class="n">popt1</span><span class="p">)</span>
+
+<span class="n">l1</span> <span class="o">=</span> <span class="n">likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">model1</span><span class="p">,</span> <span class="n">popt1</span><span class="p">)</span>
 <span class="n">l2</span> <span class="o">=</span> <span class="n">likelihood</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">model2</span><span class="p">,</span> <span class="n">popt2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;L(model1) = </span><span class="si">{:.2e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;L(model1) = </span><span class="si">{:.2e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;L(model2) = </span><span class="si">{:.2e}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l2</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -351,19 +343,14 @@ L(model2) = 4.52e-09
 </div>
 <p>Above, we can see that the more complex and less common model is more likely given the experimental data.
 Hopefully, we recognise that the model with more parameters is better suited to agree with the experimental data <a class="bibtex reference internal" href="zreferences.html#mayer-drawing-2010" id="id1">[May10]</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.58324215,  7.74620231, 11.96256934, 22.5291597 , 26.37940392,
-       35.10886992, 44.72510364, 51.74236623, 61.18896136, 71.09099239])
-</pre></div>
-</div>
-</div>
-</div>
+<p>The above, likelihood values insinuate that model 2 is correct and any rationalisations that we draw should be based around this model.
+However, how do we know that:</p>
+<ol class="simple">
+<li><p>We have not overfit by comparing a model with two-parameter against a model with one,</p></li>
+<li><p>We are correct given the preference for model 1 found in the literature.</p></li>
+</ol>
+<p>This is where Bayesian model selection can be used.
+Offering the ability to account for the greater number of parameters in a more complex model, while enabling a prior probability about the models to be integrated into the analysis.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>

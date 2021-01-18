@@ -3,6 +3,8 @@
 #
 - file: intro
 - file: some_stats
+  sections:
+    - file: likelihood
 - file: decision_trees
 - file: gradient_boosting
 - file: clustering

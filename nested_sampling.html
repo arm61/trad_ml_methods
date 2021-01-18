@@ -196,9 +196,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/nested_sampling.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/nested_sampling.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -232,6 +232,23 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/nested_sampling.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -246,6 +263,10 @@
                 
   <div class="section" id="nested-sampling">
 <h1>Nested sampling<a class="headerlink" href="#nested-sampling" title="Permalink to this headline">¶</a></h1>
+<p>Nested sampling is a method for Bayesian evidence quantification that was developed by J. Skilling <a class="bibtex reference internal" href="zreferences.html#skilling-nested-2006" id="id1">[Ski06]</a>.
+We won’t look in detail at the nested sampling algorithm, however for the interested reader I suggest taking a look at the textbook published by D. S. Sivia and J. Skilling <a class="bibtex reference internal" href="zreferences.html#sivia-data-2005" id="id2">[Siv05]</a> and the <a class="reference external" href="https://dynesty.readthedocs.io/en/latest/overview.html">background section of the <code class="docutils literal notranslate"><span class="pre">dynesty</span></code> package</a>.
+Instead, this section will focusing on using the <code class="docutils literal notranslate"><span class="pre">dynesty</span></code> package to quantify the two models mentioned previously.
+Then the next section will allow you to apply this method to the interpretation of some neutron reflectometry data.</p>
 </div>
 
     <script type="text/x-thebe-config">

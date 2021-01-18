@@ -2,12 +2,9 @@
 
 Welcome to the material for the "Traditional Machine Learning Methods" of the LENS ML School.
 
-```{image} https://miro.medium.com/max/500/1*x7P7gqjo8k2_bj2rTQWAfg.jpeg
-:alt: A meme about machine learning being a fancy name for statistics
-:class: bg-primary
-:width: 200px
-:align: center
-```
+<center>
+  <img src="https://miro.medium.com/max/500/1*x7P7gqjo8k2_bj2rTQWAfg.jpeg" alt="A meme about machine learning being a fancy name for statistics" class="bg-primary" width="500px">
+</center>
 
 Below, you will find the lecture slides (TODO) which will briefly introduce some of the subjects covered and show some applications in neutron science.
 Then for the workshop, it is suggested that you select one of the methods and work through the material in this book in detail.

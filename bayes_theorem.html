@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bayes Theorem &#8212; Traditional Machine Learning Methods</title>
+    <title>Bayes’ theorem &#8212; Traditional Machine Learning Methods</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -120,7 +120,7 @@
   <ul class="current collapse-ul">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Bayes Theorem
+     Bayes’ theorem
     </a>
    </li>
    <li class="toctree-l2">
@@ -245,6 +245,25 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-bayes-factor">
+   The Bayes’ factor
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nested-sampling">
+   Nested sampling
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -253,9 +272,31 @@
               <div>
                 
   <div class="section" id="bayes-theorem">
-<h1>Bayes Theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">¶</a></h1>
+<h1>Bayes’ theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">¶</a></h1>
 <p>The main idea behind all Bayesian modelling is that our prior knowledge about aspects of the model can, and should, inform our results.
-This can take a variety of forms, it could be our understanding of certain parameter in our model or, as introduced previously, it may be our certainty about the model itself.</p>
+This can take a variety of forms, it could be our understanding of certain parameter in our model or, as introduced previously, it may be our certainty about the model itself.
+Bayes’ theorem is generally written as follows,</p>
+<div class="math notranslate nohighlight">
+\[ P(A|B) = \frac{P(B|A)P(A)}{P(B)}, \]</div>
+<p>where, <span class="math notranslate nohighlight">\(P(A)\)</span> and <span class="math notranslate nohighlight">\(P(B)\)</span> are the independent probabilities of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(P(A|B)\)</span> is the probability of <span class="math notranslate nohighlight">\(A\)</span> given <span class="math notranslate nohighlight">\(B\)</span> is true and vice-versa for <span class="math notranslate nohighlight">\(P(B|A)\)</span>.
+For our model selection problems, we will write Bayes’ theorem with a slightly different phrasing,</p>
+<div class="math notranslate nohighlight">
+\[ P(H_x|\mathbf{D}) = \frac{P(\mathbf{D}|H_x)P(H_x)}{P(\mathbf{D})}, \]</div>
+<p>where, <span class="math notranslate nohighlight">\(H_x\)</span> is our model (hypothesis), <span class="math notranslate nohighlight">\(P(\mathbf{D}|H_x)\)</span> is the evidence for this model, <span class="math notranslate nohighlight">\(P(H_x)\)</span> is the prior porbability for the model, <span class="math notranslate nohighlight">\(P(H_x|\mathbf{D})\)</span> is the posterior probability, and <span class="math notranslate nohighlight">\(P(\mathbf{D})\)</span> is the probability associated with the measured data.
+This final object is a normalisation factor, and can be found as the sum of the evidence for every possible model.
+However, it is typically not feasible to evaluate the evidence for <strong>every</strong> model, therefore we cannot truly quantify the posterior probability.</p>
+<div class="section" id="the-bayes-factor">
+<h2>The Bayes’ factor<a class="headerlink" href="#the-bayes-factor" title="Permalink to this headline">¶</a></h2>
+<p>Despite this, we can still use this formulation for the comparison of different models for the same data.</p>
+<div class="math notranslate nohighlight">
+\[\frac{P(H_x|\mathbf{D})}{P(H_y|\mathbf{D})} = \frac{P(\mathbf{D}|H_x)}{P(\mathbf{D}|H_y)} \times \frac{P(H_x)}{P(H_y)},\]</div>
+<p>where the probabilities associated with the data only cancel out.
+The ratio between the two models is known as the Bayes factor, <span class="math notranslate nohighlight">\(B_{xy}\)</span>, and offers insight into the relative evidence for the models.</p>
+</div>
+<div class="section" id="nested-sampling">
+<h2>Nested sampling<a class="headerlink" href="#nested-sampling" title="Permalink to this headline">¶</a></h2>
+<p>We have seen how we can compare our different models, but nothing has been</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

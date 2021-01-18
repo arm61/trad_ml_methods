@@ -56,7 +56,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bayesian evidence" href="bayesian_evidence.html" />
+    <link rel="next" title="Nested sampling" href="nested_sampling.html" />
     <link rel="prev" title="Bayesian model selection" href="bayesian_model_selection.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -88,7 +88,7 @@
     <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   Traditional Machine Learning Methods
   </a>
  </li>
 </ul>
@@ -121,11 +121,6 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Bayes’ theorem
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bayesian_evidence.html">
-     Bayesian evidence
     </a>
    </li>
    <li class="toctree-l2">
@@ -187,9 +182,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/bayes_theorem.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/bayes_theorem.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -222,23 +217,6 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/bayes_theorem.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -324,7 +302,11 @@ We can think of this as a quantification of Occam’s razor.</p>
 The evidence is the integral under the product of the likelihood, <span class="math notranslate nohighlight">\(\mathcal{L}(\mathbf{X}|H)\)</span>, and the parameter specific prior, <span class="math notranslate nohighlight">\(P(\mathbf{X}|H)\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[ P(\mathbf{D}|H) = \iint_{\mathbf{R}} \mathcal{L}(\mathbf{X}|H)P(\mathbf{X}|H)\; \text{d}^M\mathbf{X}, \]</div>
-<p>where, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a vector of length <span class="math notranslate nohighlight">\(M\)</span> of the parameters that are varying in the model, <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is a <span class="math notranslate nohighlight">\(2\times M\)</span> matrix describing the range over which the integral should be evaluated.</p>
+<p>where, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a vector of length <span class="math notranslate nohighlight">\(M\)</span> of the parameters that are varying in the model, <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is a <span class="math notranslate nohighlight">\(2\times M\)</span> matrix describing the range over which the integral should be evaluated.
+As the shape of the likelihood function is not known <em>a priori</em>, however, the work of Sivia has involved assuming a Gaussian shape with some success <a class="bibtex reference internal" href="zreferences.html#sivia-bayesian-1998" id="id2">[Siv98]</a><a class="bibtex reference internal" href="zreferences.html#sivia-data-2005" id="id3">[Siv05]</a>.
+To fully quantify the evidence it is necessary that sampling to evaluate this integral, but as <span class="math notranslate nohighlight">\(M\)</span> increases, this will be more computationally intensive to achieve.
+However, a variety of sampling algorithms have been developed to find the evidence for a given model <span class="bibtex" id="id4">[goodman_bayesian_2013]</span>.
+We will look at the nested sampling approach in this workshop.</p>
 </div>
 </div>
 
@@ -357,7 +339,7 @@ The evidence is the integral under the product of the likelihood, <span class="m
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="bayesian_model_selection.html" title="previous page">Bayesian model selection</a>
-    <a class='right-next' id="next-link" href="bayesian_evidence.html" title="next page">Bayesian evidence</a>
+    <a class='right-next' id="next-link" href="nested_sampling.html" title="next page">Nested sampling</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

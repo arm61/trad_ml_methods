@@ -18,4 +18,4 @@ Additionally, I am happy for this resource to be shared with colleagues and coll
 
 ## Contributors
 
-[Andrew R. McCluskey](mccluskey.scot) from the European Spallation Source developed this material, if you have any questions please feel free to get in touch [andrew.mccluskey@ess.eu](mailto:andrew.mccluskey@ess.eu).
+[Andrew R. McCluskey](https://mccluskey.scot) from the European Spallation Source developed this material, if you have any questions please feel free to get in touch [andrew.mccluskey@ess.eu](mailto:andrew.mccluskey@ess.eu).

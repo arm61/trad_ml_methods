@@ -256,8 +256,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nested-sampling">
-   Nested sampling
+  <a class="reference internal nav-link" href="#evidence">
+   Evidence
   </a>
  </li>
 </ul>
@@ -318,9 +318,13 @@ We can think of this as a quantification of Occam’s razor.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="nested-sampling">
-<h2>Nested sampling<a class="headerlink" href="#nested-sampling" title="Permalink to this headline">¶</a></h2>
-<p>We have seen how we can compare our different models, but nothing has been</p>
+<div class="section" id="evidence">
+<h2>Evidence<a class="headerlink" href="#evidence" title="Permalink to this headline">¶</a></h2>
+<p>We have seen how we can compare our different models, but nothing has been said thus far about how the evidence is determined.
+The evidence is the integral under the product of the likelihood, <span class="math notranslate nohighlight">\(\mathcal{L}(\mathbf{X}|H)\)</span>, and the parameter specific prior, <span class="math notranslate nohighlight">\(P(\mathbf{X}|H)\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[ P(\mathbf{D}|H) = \iint_{\mathbf{R}} \mathcal{L}(\mathbf{X}|H)P(\mathbf{X}|H)\; \text{d}^M\mathbf{X}, \]</div>
+<p>where, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a vector of length <span class="math notranslate nohighlight">\(M\)</span> of the parameters that are varying in the model, <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is a <span class="math notranslate nohighlight">\(2\times M\)</span> matrix describing the range over which the integral should be evaluated.</p>
 </div>
 </div>
 

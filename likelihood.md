@@ -15,7 +15,7 @@ In the figure below, we show how the likelihood is affected by a change in $A$ a
 It is clear that the likelihood is maximised at the optimised solutions for $A$ and $\gamma$ found previously, and indeed the likelihood appears to be Gaussian in nature.
 These aspects will become important later in the course.
 
-```{figure} likelihood_plot.png
+```{figure} https://github.com/arm61/trad_ml_methods/raw/main/likelihood_plot.png
 ---
 height: 500
 name: likelihood-plot

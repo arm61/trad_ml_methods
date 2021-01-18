@@ -1,3 +1,0 @@
-# Some statistics
-
-v

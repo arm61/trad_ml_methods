@@ -9,7 +9,6 @@
 - file: bayesian_model_selection
   sections:
     - file: bayes_theorem
-    - file: bayesian_evidence
     - file: nested_sampling
     - file: bayes_exercise
 - file: zreferences.md

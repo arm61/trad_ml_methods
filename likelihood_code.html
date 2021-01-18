@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Some statistics &#8212; Traditional Machine Learning Methods</title>
+    <title>&lt;no title&gt; &#8212; Traditional Machine Learning Methods</title>
     
   <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -56,8 +56,6 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Likelihood" href="likelihood.html" />
-    <link rel="prev" title="Traditional Machine Learning Methods" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -92,9 +90,9 @@
   </a>
  </li>
 </ul>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="current reference internal" href="#">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="some_stats.html">
    Some statistics
   </a>
   <ul class="collapse-ul">
@@ -196,7 +194,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/some_stats.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/likelihood_code.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -216,7 +214,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/arm61/trad_ml_methods/issues/new?title=Issue%20on%20page%20%2Fsome_stats.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/arm61/trad_ml_methods/issues/new?title=Issue%20on%20page%20%2Flikelihood_code.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -237,7 +235,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/some_stats.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/likelihood_code.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -258,12 +256,7 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-dependent-analysis">
-   Model-dependent analysis
-  </a>
- </li>
+            <ul class="simple nav section-nav flex-column">
 </ul>
 
         </nav>
@@ -277,28 +270,12 @@
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing some modules</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
-<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">getfullargspec</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="some-statistics">
-<h1>Some statistics<a class="headerlink" href="#some-statistics" title="Permalink to this headline">¶</a></h1>
-<center>
-  <img src="https://miro.medium.com/max/500/1*x7P7gqjo8k2_bj2rTQWAfg.jpeg" alt="A meme about machine learning being a fancy name for statistics" class="bg-primary" width="500px">
-</center><br>
-<p>While the above image is <a class="reference external" href="https://towardsdatascience.com/no-machine-learning-is-not-just-glorified-statistics-26d3952234e3">hyperbolic</a>, learning about machine learning methods benefits from some basic grounding in statistics.
-Therefore, we will <em>quickly</em> introduce some basics of statistical modelling for data analysis before moving on to look at our traditional machine learning methods.</p>
-<div class="section" id="model-dependent-analysis">
-<h2>Model-dependent analysis<a class="headerlink" href="#model-dependent-analysis" title="Permalink to this headline">¶</a></h2>
-<p>The majority of neutron scattering (both elastic and inelastic) data is analysed through a model-dependent approach.
-This is where some model is proposed that we can produce some model data from, the model has some parameters that we refine to get the best agreement between the model data and our experimental data.
-Consider the fitting of different functional descriptions to quasi-elastic neutron scattering (QENS) data.
-Below, we read in and plot some <a class="reference internal" href="example.html"><span class="doc std std-doc">example</span></a> QENS data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;lorentzian.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -308,99 +285,58 @@ Below, we read in and plot some <a class="reference internal" href="example.html
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\hbar \omega$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$S(q,\omega)$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/some_stats_3_0.png" src="_images/some_stats_3_0.png" />
-</div>
-</div>
-<p>The aim is to model this as a Lorentzian funtion with some uniform background added (for simplicity we will ignore the resolution function).
-We can describe this mathematically as follows,</p>
-<div class="math notranslate nohighlight">
-\[ y = \frac{A}{\pi\gamma \big(1 + \frac{x - x_0}{\gamma}\big)^2} + b, \]</div>
-<p>where, <span class="math notranslate nohighlight">\(A\)</span> is a scale factor, <span class="math notranslate nohighlight">\(\gamma\)</span> is half of the full width at half maximum, <span class="math notranslate nohighlight">\(x_0\)</span> is the peak centre, and <span class="math notranslate nohighlight">\(b\)</span> is the uniform background.
-Above, we have used <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in lieu of <span class="math notranslate nohighlight">\(\hbar\omega\)</span> and <span class="math notranslate nohighlight">\(S(q, \omega)\)</span>.
-In order to use this function for analysis, we will write is as a Python function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lorentzian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lorentzian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Lorentzian function for QENS analysis.</span>
+<span class="sd">    Lorentzian function for QENS analysis, constrained a bit.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
 <span class="sd">        x (array_like): energy transfer values. </span>
 <span class="sd">        A (float): scale factor.</span>
 <span class="sd">        gamma (float): half width at half maximum.</span>
-<span class="sd">        x_0 (float): peak centre</span>
-<span class="sd">        b (float): background</span>
 <span class="sd">        </span>
 <span class="sd">    Returns:</span>
 <span class="sd">        (array_like): model scattering function&quot;&quot;&quot;</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.038281944596418975</span><span class="p">,</span> <span class="mf">0.49566380819342426</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">A</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">))))</span> <span class="o">+</span> <span class="n">b</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>You may be familiar with using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> to optimize the parameters of some function to a dataset.
-We carry this out below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">lorentzian</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span> <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">punc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">likelihood</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">lorentzian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">gamma</span><span class="p">))</span> <span class="o">/</span> <span class="n">yerr</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">yerr</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">lorentzian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">popt</span><span class="p">),</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$\hbar \omega$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$S(q,\omega)$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.932</span><span class="p">,</span> <span class="mf">0.96</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">gamma_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.525</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">A_range</span><span class="p">,</span> <span class="n">gamma_range</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">A</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">A_range</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">gamma</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gamma_range</span><span class="p">):</span>
+        <span class="n">Z</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">likelihood</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">gamma</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mathcal</span><span class="si">{L}</span><span class="s1">[\mathbf</span><span class="si">{D}</span><span class="s1">|M(\mathbf</span><span class="si">{X}</span><span class="s1">)]$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\gamma$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$A$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;likelihood_plot.png&#39;</span><span class="p">,</span> <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/some_stats_8_0.png" src="_images/some_stats_8_0.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">arg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">lorentzian</span><span class="p">)</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">arg</span><span class="si">:</span><span class="s2">&lt;6</span><span class="si">}</span><span class="s2">= </span><span class="si">{</span><span class="n">popt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">^7.3f</span><span class="si">}</span><span class="s2">+/- </span><span class="si">{</span><span class="n">punc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A     =  0.946 +/- 0.011
-gamma =  0.538 +/- 0.008
-x0    = -0.038 +/- 0.007
-b     =  0.496 +/- 0.001
-</pre></div>
-</div>
-</div>
-</div>
-<p>This is a simple example of the application of model dependent analysis, we have used some optimisation method (in this example, the Levenberg-Marquardt algorithm <a class="bibtex reference internal" href="zreferences.html#levenberg-method-1944" id="id1">[Lev44]</a>) to find the values of <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(\gamma\)</span>, <span class="math notranslate nohighlight">\(x_0\)</span>, and <span class="math notranslate nohighlight">\(b\)</span> that offer the best agreement between our data and our model.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">popt</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49566380819342426
-</pre></div>
-</div>
-</div>
-</div>
-<div class="toctree-wrapper compound">
-</div>
+<img alt="_images/likelihood_code_5_0.png" src="_images/likelihood_code_5_0.png" />
 </div>
 </div>
 
@@ -432,8 +368,6 @@ b     =  0.496 +/- 0.001
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Traditional Machine Learning Methods</a>
-    <a class='right-next' id="next-link" href="likelihood.html" title="next page">Likelihood</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

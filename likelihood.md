@@ -18,4 +18,5 @@ These aspects will become important later in the course.
 <center>
   <img src="https://github.com/arm61/trad_ml_methods/raw/main/likelihood_plot.png" alt="An example of a likelihood function, where $A$ and $\gamma$ are varied." class="bg-primary" width="500px">
 </center>
+
 An example of a likelihood function, where $A$ and $\gamma$ are varied. The code to generate this figure can be found [here](./likelihood_code).

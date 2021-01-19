@@ -48,4 +48,4 @@ where, $\mathbf{X}$ is a vector of length $M$ of the parameters that are varying
 As the shape of the likelihood function is not known *a priori*, however, the work of Sivia has involved assuming a Gaussian shape with some success {cite}`sivia_bayesian_1998,sivia_data_2005`.
 To fully quantify the evidence it is necessary that sampling to evaluate this integral, but as $M$ increases, this will be more computationally intensive to achieve.
 However, a variety of sampling algorithms have been developed to find the evidence for a given model {cite}`goodman_bayesian_2013`.
-We will look at the nested sampling approach in this workshop. 
+We will look at the nested sampling approach in this workshop.

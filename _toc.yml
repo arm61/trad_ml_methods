@@ -9,6 +9,8 @@
 - file: gradient_boosting
 - file: clustering
 - file: dimensionality_reduction
+  sections:
+    - file: pca
 - file: bayesian_model_selection
   sections:
     - file: bayes_theorem

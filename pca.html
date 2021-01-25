@@ -296,7 +296,8 @@
 <div class="section" id="principal-component-analysis">
 <h1>Principal Component Analysis<a class="headerlink" href="#principal-component-analysis" title="Permalink to this headline">¶</a></h1>
 <p>Principal component analysis (PCA) is a form of unsupervised machine learning method.
-We can understadn PCA visually with a simple two-dimensional toy example.</p>
+We can understand PCA visually with a simple two-dimensional toy example.
+A deep discussion of the mathematical underpinnings of the PCA algorithm can be found in Bro and Smilde <a class="bibtex reference internal" href="zreferences.html#bro-analytical-2014" id="id1">[BS14]</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>

@@ -11,6 +11,8 @@
 - file: dimensionality_reduction
   sections:
     - file: pca
+    - file: wine_pca
+    - file: pca_exercise
 - file: bayesian_model_selection
   sections:
     - file: bayes_theorem

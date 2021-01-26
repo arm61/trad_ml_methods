@@ -2,5 +2,6 @@ jupyter-book
 matplotlib
 numpy
 scipy
+pandas
 dynesty
 scikit-learn

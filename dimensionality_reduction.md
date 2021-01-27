@@ -6,4 +6,4 @@ The aim of a dimensionality reduction process is to find the most important feat
 
 In this section, we will focus on principal component analysis (PCA), probably the most popular dimensionality reduction method. 
 First, we will introduce some background of how this method before looking in detail at an [example](./example) of applying PCA to a multi-variate dataset. 
-Finally, you will be given the chance to try PCA on some noisy neutron powder diffraction data.
+Finally, you will be given the chance to try PCA for edge detection on some [neutron imaging data](./example).

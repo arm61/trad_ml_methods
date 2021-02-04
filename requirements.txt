@@ -6,3 +6,4 @@ pandas
 dynesty
 scikit-learn
 pillow
+refnx

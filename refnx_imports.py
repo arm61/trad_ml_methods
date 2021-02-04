@@ -5,13 +5,14 @@ from refnx.reflect import SLD, ReflectModel
 
 air = SLD(0.0, name='air')
 tails = SLD(7.5, name='tail')
+lipid = SLD(7.2, name='lipid')
 heads = SLD(3.6, name='head')
 d2o = SLD(0, name='d2o')
 
 
     
 def one_layer(data):
-    th_layer = tails(22, 3.)
+    th_layer = lipid(22, 3.)
     w_layer = d2o(0, 3.)
     structure = air | th_layer | w_layer
     model = ReflectModel(structure, bkg=5e-6, dq=5.)

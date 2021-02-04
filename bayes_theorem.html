@@ -303,7 +303,7 @@ However, it is typically not feasible to evaluate the evidence for <strong>every
 \[\frac{P(H_x|\mathbf{D})}{P(H_y|\mathbf{D})} = \frac{P(\mathbf{D}|H_x)}{P(\mathbf{D}|H_y)} \times \frac{P(H_x)}{P(H_y)},\]</div>
 <p>where the probabilities associated with the data only cancel out.
 The ratio between the two models is known as the Bayes factor, <span class="math notranslate nohighlight">\(B_{xy}\)</span>, and offers insight into the relative evidence for the models.</p>
-<p>The Bayes’ factor is typically interpretated using the table below from the work of Kass and Raftery <a href="#id1"><span class="problematic" id="id2">:cite:`kass_bayes_1995`</span></a>.
+<p>The Bayes’ factor is typically interpretated using the table below from the work of Kass and Raftery <a class="bibtex reference internal" href="zreferences.html#kass-bayes-1995" id="id1">[Kas95]</a>.
 Typically, for Bayesian model selection, we are comparing models with different numbers of parameters.
 In this interpretation of the Bayes factor, the model <span class="math notranslate nohighlight">\(H_y\)</span> has fewer parameters than <span class="math notranslate nohighlight">\(H_x\)</span> and therefore for the latter model to be considered “better” is it necessary to have a substantially better evidence.
 We can think of this as a quantification of Occam’s razor.</p>
@@ -336,9 +336,9 @@ The evidence is the integral under the product of the likelihood, <span class="m
 <div class="math notranslate nohighlight">
 \[ P(\mathbf{D}|H) = \iint_{\mathbf{R}} \mathcal{L}(\mathbf{X}|H)P(\mathbf{X}|H)\; \text{d}^M\mathbf{X}, \]</div>
 <p>where, <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is a vector of length <span class="math notranslate nohighlight">\(M\)</span> of the parameters that are varying in the model, <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is a <span class="math notranslate nohighlight">\(2\times M\)</span> matrix describing the range over which the integral should be evaluated.
-As the shape of the likelihood function is not known <em>a priori</em>, however, the work of Sivia has involved assuming a Gaussian shape with some success <a href="#id3"><span class="problematic" id="id4">:cite:`sivia_bayesian_1998,sivia_data_2005`</span></a>.
+As the shape of the likelihood function is not known <em>a priori</em>, however, the work of Sivia has involved assuming a Gaussian shape with some success <a class="bibtex reference internal" href="zreferences.html#sivia-bayesian-1998" id="id2">[Siv98]</a><a class="bibtex reference internal" href="zreferences.html#sivia-data-2005" id="id3">[Siv05]</a>.
 To fully quantify the evidence it is necessary that sampling to evaluate this integral, but as <span class="math notranslate nohighlight">\(M\)</span> increases, this will be more computationally intensive to achieve.
-However, a variety of sampling algorithms have been developed to find the evidence for a given model <a href="#id5"><span class="problematic" id="id6">:cite:`goodman_bayesian_2013`</span></a>.
+However, a variety of sampling algorithms have been developed to find the evidence for a given model <a class="bibtex reference internal" href="zreferences.html#goodman-bayesian-2013" id="id4">[Goo13]</a>.
 We will look at the nested sampling approach in this workshop.</p>
 </div>
 </div>

@@ -9,7 +9,7 @@
 - file: gradient_boosting
 - file: clustering
   sections:
-    - k_means
+    - file: k_means
 - file: dimensionality_reduction
   sections:
     - file: pca

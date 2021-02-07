@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PCA for edge detection &#8212; Traditional Machine Learning Methods</title>
+    <title>k-Means Clustering &#8212; Traditional Machine Learning Methods</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bayesian model selection" href="bayesian_model_selection.html" />
-    <link rel="prev" title="PCA in Action" href="wine_pca.html" />
+    <link rel="next" title="Dimensionality reduction" href="dimensionality_reduction.html" />
+    <link rel="prev" title="Clustering" href="clustering.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -117,13 +117,13 @@
    Gradient boosting
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="clustering.html">
    Clustering
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="k_means.html">
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      <em>
       k
      </em>
@@ -134,11 +134,11 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="dimensionality_reduction.html">
    Dimensionality reduction
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="pca.html">
      Principal Component Analysis
@@ -149,8 +149,8 @@
      PCA in Action
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pca_exercise.html">
      PCA for edge detection
     </a>
    </li>
@@ -227,7 +227,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/pca_exercise.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/k_means.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -247,7 +247,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/arm61/trad_ml_methods/issues/new?title=Issue%20on%20page%20%2Fpca_exercise.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/arm61/trad_ml_methods/issues/new?title=Issue%20on%20page%20%2Fk_means.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -268,7 +268,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/pca_exercise.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/k_means.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -285,20 +285,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -310,84 +296,96 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">pairwise_distances_argmin</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="pca-for-edge-detection">
-<h1>PCA for edge detection<a class="headerlink" href="#pca-for-edge-detection" title="Permalink to this headline">¶</a></h1>
-<p>This exercise will involve using principal component analysis as a fast tool to improve edge detection in neutron imaging.
-The idea for the exercise comes from discussion of PCA in <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">Jake VanderPlas’ Python Data Science Handbook</a> <a class="bibtex reference internal" href="zreferences.html#vanderplas-python-2016" id="id1">[Van16]</a>, while the data was take from an <a class="reference external" href="https://doi.org/10.5281/zenodo.825926">open dataset</a> <a class="bibtex reference internal" href="zreferences.html#burca-crab-2017" id="id2">[BNP+17]</a>.
-For this exericse, we will consider a neutron image of a fossil, that can be downloaded <a class="reference external" href="https://github.com/arm61/trad_ml_methods/raw/main/fossil.tiff">here</a> (it is probably best to right click and save the file as <code class="docutils literal notranslate"><span class="pre">'fossil.tiff'</span></code>).</p>
-<p>The first task is that we read in the file and can visualise it, for this we will require the <code class="docutils literal notranslate"><span class="pre">pillow</span></code> package as well as <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
+<div class="section" id="k-means-clustering">
+<h1><em>k</em>-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h1>
+<p><em>k</em>-means clustering is an algorithm that searches for a given numebr of clusters within some unlabeled multidimensional dataset.
+The optimal clustering is found as follow:</p>
+<ul class="simple">
+<li><p>The “cluster centre” is the artihmetic mean of all of the points belonging to the cluster.</p></li>
+<li><p>Each point is closer to its own cluster centre than other cluster centres.</p></li>
+</ul>
+<p>These assumptions are the basis for the <em>k</em>-means algorithm, which is implemented with an expectation-maximisation (E-M) approach.
+The E-M approach consists of the following procedure:</p>
+<ol class="simple">
+<li><p>Guess some cluster centres</p></li>
+<li><p>Repeat the following to convergence:</p>
+<ol class="simple">
+<li><p>E-step: assign points to the nearest cluster centre</p></li>
+<li><p>M-step: set the cluster centres to the mean</p></li>
+</ol>
+</li>
+</ol>
+<p>The E-step updates our expectation of which cluster each point belongs to, while the M-step maximises some fitness function that defines the cluster centre locations.
+In the case of <em>k</em>-means, the maximisation is achieved by taking a simple mean of the data in each cluster.
+Each repeatition will always result in an better estimate of the cluster characteristics.</p>
+<p>The <em>k</em>-means algorithm is simple enough that it can be written with just a few handfulls of lines of code, see the example below from the work of VanderPlas <a class="bibtex reference internal" href="zreferences.html#vanderplas-python-2016" id="id1">[Van16]</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;fossil.tiff&#39;</span><span class="p">)</span>
-<span class="n">fossil</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fossil</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_clusters</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_clusters</span><span class="p">):</span>
+    <span class="c1"># 1. Guess some cluster centres</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])[:</span><span class="n">n_clusters</span><span class="p">]</span>
+    <span class="n">centres</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># 2A. Assign points to the nearest cluster centre</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">pairwise_distances_argmin</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">centres</span><span class="p">)</span>
+        
+        <span class="c1"># 2B. Set the cluster centres to the mean</span>
+        <span class="n">new_centres</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="n">labels</span> <span class="o">==</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">)])</span>
+        
+        <span class="c1"># Check convergence</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">centres</span> <span class="o">==</span> <span class="n">new_centres</span><span class="p">):</span>
+            <span class="k">break</span>
+        <span class="n">centres</span> <span class="o">=</span> <span class="n">new_centres</span>
+    
+    <span class="k">return</span> <span class="n">centres</span><span class="p">,</span> <span class="n">labels</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">centres</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">find_clusters</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/pca_exercise_2_0.png" src="_images/pca_exercise_2_0.png" />
+<img alt="_images/k_means_3_0.png" src="_images/k_means_3_0.png" />
 </div>
 </div>
-<p>Above, we have read in the image, converted this to a 2D <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array and plotted this array as an image.</p>
-<p>We can see that the image isn’t great, there are some features inside the fossil but these are hard to see.
-Here, we will look at using a simple PCA to improve the definition of the fossil.
-This could be used in combination with other more sophisticated methods, such as convolutional neural networks.</p>
-<p>The idea behind using PCA for noise filtering in an image is that components with a high variance (much greater than the noise) should be unaffected by the noise.
-Therefore, if you reconstruct the dataset which some subset of the signal then you can throw out the noise but keep the definition.</p>
-<p>The first things we should do it is to investigate the how much of the explained variance is described with each comment.
-We can achieve this by training our PCA on our data, without specifying a number of components.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">fossil</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of components&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative explained variance&#39;</span><span class="p">)</span>
+<p>There are some important issues that we need to be aware of when using a simple E-M algorithm:</p>
+<ul class="simple">
+<li><p>The globally optimal result may not be achieved: As is the cause with all optimisations, although the result is improving, it may not be moving towards to global optimium solution.</p></li>
+<li><p>The number of clusters must be selected beforehand: It is necessary that we have some <em>a priori</em> knowledge about our dataset to effectively apply a <em>k</em>-means clustering, as we must now at the beginning how many clusters we expect to find.</p></li>
+<li><p><em>k</em>-means is limited to linear cluster boundaries: The fact that k-means is finding samples as close as possible in cartesian space means that the clusters cannot have more complex geometries.</p></li>
+<li><p><em>k</em>-means can be slow for large numbers of samples: Each iteration must access every point in the dataset, this means that this algorithm can be slow for very large datasets.</p></li>
+</ul>
+<p>Let’s quickly see the how to leverage the <em>k</em>-means algorithm  in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> before we move on to a more complex method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kmeans</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">kmeans</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y_means</span> <span class="o">=</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">kmeans</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This should give a plot similar to that seen previously, where the max number of components is 1400 (the size of the image).</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">PCA()</span></code> class, in addition to the <code class="docutils literal notranslate"><span class="pre">n_components</span></code> argument seen previously can be defined to produce a number of components that describes some fraction of the variance.
-For example, to return the components that can describe 60 % of the observed variance we run the following.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mf">0.6</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">fossil</span><span class="p">)</span>
-<span class="n">pca</span><span class="o">.</span><span class="n">n_components_</span>
-</pre></div>
-</div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
+<img alt="_images/k_means_5_0.png" src="_images/k_means_5_0.png" />
 </div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">n_components_</span></code> object shows that just 3 components are required to describe 60 % of our variance.
-We can use these three components to reconstruct our image with the help of an inverse transforms.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">components</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">fossil</span><span class="p">)</span>
-<span class="n">filtered</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">filtered</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fc883b68f90&gt;
-</pre></div>
-</div>
-<img alt="_images/pca_exercise_6_1.png" src="_images/pca_exercise_6_1.png" />
-</div>
-</div>
-<p>The result isn’t great, however, this is understandable as only 60 % of the variance is represented and it can be seen that the edges of the fossil are improved compared to the background.</p>
-<div class="section" id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<p>Try different values of variance to obtain the best balance between noise reduction and detail for the image of the fossil used herein.
-You can also try this methodology on other neutron images, such as those from a <a class="reference external" href="https://github.com/arm61/trad_ml_methods/raw/main/crab.tiff">crab</a>, and another <a class="reference external" href="https://github.com/arm61/trad_ml_methods/raw/main/fossil2.tiff">fossil</a>.</p>
 </div>
 </div>
 
@@ -419,8 +417,8 @@ You can also try this methodology on other neutron images, such as those from a 
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="wine_pca.html" title="previous page">PCA in Action</a>
-    <a class='right-next' id="next-link" href="bayesian_model_selection.html" title="next page">Bayesian model selection</a>
+    <a class='left-prev' id="prev-link" href="clustering.html" title="previous page">Clustering</a>
+    <a class='right-next' id="next-link" href="dimensionality_reduction.html" title="next page">Dimensionality reduction</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

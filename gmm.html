@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The example data &#8212; Traditional Machine Learning Methods</title>
+    <title>Gaussian Mixture Models &#8212; Traditional Machine Learning Methods</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,6 +56,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dimensionality reduction" href="dimensionality_reduction.html" />
+    <link rel="prev" title="k-Means Clustering" href="k_means.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -90,7 +92,7 @@
   </a>
  </li>
 </ul>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="some_stats.html">
    Some statistics
@@ -115,11 +117,11 @@
    Gradient boosting
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="clustering.html">
    Clustering
   </a>
-  <ul class="collapse-ul">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="k_means.html">
      <em>
@@ -128,8 +130,8 @@
      -Means Clustering
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gmm.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Gaussian Mixture Models
     </a>
    </li>
@@ -230,9 +232,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/example.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/gmm.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -250,7 +252,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/arm61/trad_ml_methods/issues/new?title=Issue%20on%20page%20%2Fexample.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/arm61/trad_ml_methods/issues/new?title=Issue%20on%20page%20%2Fgmm.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -266,6 +268,23 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/gmm.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -278,15 +297,67 @@
         
               <div>
                 
-  <div class="section" id="the-example-data">
-<h1>The example data<a class="headerlink" href="#the-example-data" title="Permalink to this headline">¶</a></h1>
-<p>By example I mean that it is fake data that I synthesized for this example.</p>
-<p>The inspiration for each example were from the following:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://qensmodels.readthedocs.io/examples/lmfit_lorentzian_and_backgd_fit.html">QENS data in the “Some statistics” seciton</a></p></li>
-<li><p><a class="reference external" href="https://doi.org/10.1039/C3AY41907J">Looking at wine composition with PCA</a></p></li>
-<li><p><a class="reference external" href="https://doi.org/10.5281/zenodo.825926">PCA for edge detection in neutron imaging used the following data</a></p></li>
-</ul>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="gaussian-mixture-models">
+<h1>Gaussian Mixture Models<a class="headerlink" href="#gaussian-mixture-models" title="Permalink to this headline">¶</a></h1>
+<p>The Gaussian mixture model (GMM) can be viewed as an extension of <em>k</em>-means clustering which is capable of overcoming some of the shortcomings.
+The GMM attempts to find a mixture of multidimensional Gaussian probability distributions that best model any input dataset.
+This is a probabilistic model, so it is possible to find probabilistic cluster assignments, this is shown for the blob example from the previous section below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y_true</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">probs</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">size</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">probs</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/gmm_2_0.png" src="_images/gmm_2_0.png" />
+</div>
+</div>
+<p>We can see that the points that are near the boundaries between different clusters have less certainty (represented by a smaller size) about the cluster they are in.</p>
+<p>The GMM is very similar to <em>k</em>-means; using an expectation-maximisation approach that qualitatively does the following:</p>
+<ol class="simple">
+<li><p>Choose starting guesses for the location and shape</p></li>
+<li><p>Repeat the following until converaged:</p>
+<ol class="simple">
+<li><p>E-step: for each point, find weights encoding the probability of membership in each cluster</p></li>
+<li><p>M-step: for each cluster, update its location, normalisation, and shape based on <em>all</em> data points, making use of the weights</p></li>
+</ol>
+</li>
+</ol>
+<p>As a result of this probabilistic approach, each cluster is associated not with a hard-edged sphere, but a smooth Gaussian model.
+This methodology, like standard <em>k</em>-means, suffers that it is possible to miss this global minima, so in practice multiple random initialisations are used.
+The fact that Gaussian models are used means that the cluster shapes do not need to be circular.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_stretched</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">covariance_type</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_stretched</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_stretched</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/gmm_4_0.png" src="_images/gmm_4_0.png" />
+</div>
+</div>
+<p>Note above, we stated that the <code class="docutils literal notranslate"><span class="pre">covarience_type</span></code> should be <code class="docutils literal notranslate"><span class="pre">'full'</span></code>.
+This hyperparameter defines the shape of the Gaussian models that are used for each cluster, <code class="docutils literal notranslate"><span class="pre">'full'</span></code> indicates that the cluster should be modelled as an ellipse with an arbitrary orientation.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -317,6 +388,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="k_means.html" title="previous page"><em>k</em>-Means Clustering</a>
+    <a class='right-next' id="next-link" href="dimensionality_reduction.html" title="next page">Dimensionality reduction</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

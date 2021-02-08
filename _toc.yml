@@ -10,6 +10,7 @@
 - file: clustering
   sections:
     - file: k_means
+    - file: gmm
 - file: dimensionality_reduction
   sections:
     - file: pca

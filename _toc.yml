@@ -7,7 +7,7 @@
     - file: likelihood
 - file: classification
   section:
-    - file: decision_tress
+    - file: decision_trees
 - file: gradient_boosting
 - file: clustering
   sections:

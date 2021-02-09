@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Decision trees &#8212; Traditional Machine Learning Methods</title>
+    <title>Decision trees &amp; random forests &#8212; Traditional Machine Learning Methods</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -109,7 +109,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Decision trees
+   Decision trees &amp; random forests
   </a>
  </li>
  <li class="toctree-l1">
@@ -232,9 +232,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/decision_trees.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/decision_trees.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -268,6 +268,23 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/decision_trees.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -280,8 +297,36 @@
         
               <div>
                 
-  <div class="section" id="decision-trees">
-<h1>Decision trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">¶</a></h1>
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="decision-trees-random-forests">
+<h1>Decision trees &amp; random forests<a class="headerlink" href="#decision-trees-random-forests" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we will investigate the utilisation of decision trees for the classification of some data.
+These are an extremely intuitive way to classify or label objects; a bit like a <a class="reference external" href="https://www.buzzfeed.com/jenniferabidor/which-paul-rudd-character-are-you">Buzzfeed quiz to determine which Paul Rudd character you are</a> (I got Mike from Friends), a decision tree ask a series of questions designed to zero in on the classification.
+An example of this for animal classification is shown below from the work of VanderPlas <a class="bibtex reference internal" href="zreferences.html#vanderplas-python-2016" id="id1">[Van16]</a>.</p>
+<p><img alt="" src="https://jakevdp.github.io/PythonDataScienceHandbook/figures/05.08-decision-tree.png" /></p>
+<p>This example uses binary splitting, where each question cuts the number of options in half, which is extremely efficient in reducing the number of options.
+In traditional machine learning implementations, the questions that we ask generally involve axis-aligned splitting of the data.
+Let’s have a look at what that means.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/decision_trees_2_0.png" src="_images/decision_trees_2_0.png" />
+</div>
+</div>
+<p>A simple decision tree built on this data would iteratively split the data along the axes based on some criterion and assign a label to the new region based on the majority of the points within it.</p>
 </div>
 
     <script type="text/x-thebe-config">

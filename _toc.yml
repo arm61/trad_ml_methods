@@ -6,7 +6,7 @@
   sections:
     - file: likelihood
 - file: classification
-  section:
+  sections:
     - file: decision_trees
 - file: gradient_boosting
 - file: clustering

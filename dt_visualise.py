@@ -15,3 +15,19 @@ def show(model, X, y, ax):
     contours = ax.contourf(xx, yy, Z, alpha=0.3, levels=np.arange(n_classes + 1) - 0.5, zorder=1)
     ax.set(xlim=xlim, ylim=ylim)
     return ax
+
+
+def show_prob(model, X, y, ax):
+    model.fit(X, y)
+    size = 50 * model.predict_proba(X).max(1) ** 2
+    ax.scatter(X[:, 0], X[:, 1], c=y, s=size, clim=(y.min(), y.max()), zorder=3)
+    ax.axis('tight')
+    xlim = ax.get_xlim()
+    ylim = ax.get_ylim()
+    xx, yy = np.meshgrid(np.linspace(*xlim, num=200),
+                         np.linspace(*ylim, num=200))
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)
+    n_classes = len(np.unique(y))
+    contours = ax.contourf(xx, yy, Z, alpha=0.3, levels=np.arange(n_classes + 1) - 0.5, zorder=1)
+    ax.set(xlim=xlim, ylim=ylim)
+    return ax

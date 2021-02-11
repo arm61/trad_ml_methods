@@ -334,7 +334,7 @@
 <h1>PCA for edge detection<a class="headerlink" href="#pca-for-edge-detection" title="Permalink to this headline">¶</a></h1>
 <p>This exercise will involve using principal component analysis as a fast tool to improve edge detection in neutron imaging.
 The idea for the exercise comes from discussion of PCA in <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/">Jake VanderPlas’ Python Data Science Handbook</a> <a class="bibtex reference internal" href="zreferences.html#vanderplas-python-2016" id="id1">[Van16]</a>, while the data was take from an <a class="reference external" href="https://doi.org/10.5281/zenodo.825926">open dataset</a> <a class="bibtex reference internal" href="zreferences.html#burca-crab-2017" id="id2">[BNP+17]</a>.
-For this exericse, we will consider a neutron image of a fossil, that can be downloaded <a class="reference external" href="https://github.com/arm61/trad_ml_methods/raw/main/fossil.tiff">here</a> (it is probably best to right click and save the file as <code class="docutils literal notranslate"><span class="pre">'fossil.tiff'</span></code>).</p>
+For this exercise, we will consider a neutron image of a fossil, that can be downloaded <a class="reference external" href="https://github.com/arm61/trad_ml_methods/raw/main/fossil.tiff">here</a> (it is probably best to right click and save the file as <code class="docutils literal notranslate"><span class="pre">'fossil.tiff'</span></code>).</p>
 <p>The first task is that we read in the file and can visualise it, for this we will require the <code class="docutils literal notranslate"><span class="pre">pillow</span></code> package as well as <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -391,7 +391,7 @@ We can use these three components to reconstruct our image with the help of an i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fa64bbd0b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7fc9d5a6d910&gt;
 </pre></div>
 </div>
 <img alt="_images/pca_exercise_6_1.png" src="_images/pca_exercise_6_1.png" />

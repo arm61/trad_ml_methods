@@ -322,7 +322,7 @@
 <h1>Nested sampling<a class="headerlink" href="#nested-sampling" title="Permalink to this headline">¶</a></h1>
 <p>Nested sampling is a method for Bayesian evidence quantification that was developed by J. Skilling <a class="bibtex reference internal" href="zreferences.html#skilling-nested-2006" id="id1">[Ski06]</a>.
 We won’t look in detail at the nested sampling algorithm, however for the interested reader I suggest taking a look at the textbook published by D. S. Sivia and J. Skilling <a class="bibtex reference internal" href="zreferences.html#sivia-data-2005" id="id2">[Siv05]</a> and the <a class="reference external" href="https://dynesty.readthedocs.io/en/latest/overview.html">background section of the <code class="docutils literal notranslate"><span class="pre">dynesty</span></code> package</a>.
-Instead, this section will focusing on using the <code class="docutils literal notranslate"><span class="pre">dynesty</span></code> package to quantify the two models mentioned previously.
+Instead, this section will focus on using the <code class="docutils literal notranslate"><span class="pre">dynesty</span></code> package to quantify the two models mentioned previously.
 Then the next section will allow you to apply this method to the interpretation of some neutron reflectometry data.</p>
 <p>Firstly, let’s get the data and models back.</p>
 <div class="cell docutils container">
@@ -367,7 +367,7 @@ Then the next section will allow you to apply this method to the interpretation 
 <p>Since the determination of the evidence is the integral of the likelihood and the prior for each parameter, we must define these.
 These must be bounded integrals, i.e. they cannot start or end at infinity.
 For this example, uninformative priors (where all values within the bounds are equally likely) where used.
-These are define within the prior transform function below.</p>
+These are defined within the prior transform function below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pt_model1</span><span class="p">(</span><span class="n">u</span><span class="p">):</span> 
@@ -500,7 +500,7 @@ Note that if our prior understanding of these two models was not integrated into
 </div>
 </div>
 </div>
-<p>Hopefully, from this example you will have seen how to create a dynesty compatible model that we can find the log-evidence for and how we can use this for model comparison.
+<p>Hopefully, from this example you will have seen how to create a <code class="docutils literal notranslate"><span class="pre">dynesty</span></code> compatible model that we can find the log-evidence for and how we can use this for model comparison.
 The exercise associated with this involves applying this methodology to model comparison in neutron reflectometry analysis but hopefully you can see the broader utility of this subject.</p>
 </div>
 

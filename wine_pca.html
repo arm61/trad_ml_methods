@@ -532,7 +532,7 @@ For example, if we plot the ethanol contant against the glycerol content, we can
 <p>If these two features were completely correlated, it would be possible to describe the dataset completely with a combined feature.
 Let’s investigate performing a single component PCA on these two covariant features.
 First it is necessary to normalise the features such that those with large values do no overwhelm the analysis.
-This is achieved with the <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing.scale</span></code> function, we have also defined an <code class="docutils literal notranslate"><span class="pre">inverse_scale</span></code> helper function that will unnormalise</p>
+This is achieved with the <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing.scale</span></code> function, we have also defined an <code class="docutils literal notranslate"><span class="pre">inverse_scale</span></code> helper function that will unnormalise the values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">scale</span>
@@ -551,7 +551,7 @@ This is achieved with the <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <p>We can then reduce the relationship between ethanol and glycerol content to a single dimension.
-We then invesrse transform this to visualise the effect.</p>
+We then inverse transform this to visualise the effect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>

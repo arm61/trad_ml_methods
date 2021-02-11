@@ -9,7 +9,6 @@
   sections:
     - file: decision_trees
     - file: random_forest
-- file: gradient_boosting
 - file: clustering
   sections:
     - file: k_means

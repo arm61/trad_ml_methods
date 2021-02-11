@@ -319,10 +319,10 @@
 </div>
 <div class="section" id="k-means-clustering">
 <h1><em>k</em>-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Permalink to this headline">¶</a></h1>
-<p><em>k</em>-means clustering is an algorithm that searches for a given numebr of clusters within some unlabeled multidimensional dataset.
+<p><em>k</em>-means clustering is an algorithm that searches for a given number of clusters within some unlabeled multidimensional dataset.
 The optimal clustering is found as follow:</p>
 <ul class="simple">
-<li><p>The “cluster centre” is the artihmetic mean of all of the points belonging to the cluster.</p></li>
+<li><p>The “cluster centre” is the arithmetic mean of all of the points belonging to the cluster.</p></li>
 <li><p>Each point is closer to its own cluster centre than other cluster centres.</p></li>
 </ul>
 <p>These assumptions are the basis for the <em>k</em>-means algorithm, which is implemented with an expectation-maximisation (E-M) approach.
@@ -338,7 +338,7 @@ The E-M approach consists of the following procedure:</p>
 </ol>
 <p>The E-step updates our expectation of which cluster each point belongs to, while the M-step maximises some fitness function that defines the cluster centre locations.
 In the case of <em>k</em>-means, the maximisation is achieved by taking a simple mean of the data in each cluster.
-Each repeatition will always result in an better estimate of the cluster characteristics.</p>
+Each repatition will always result in a better estimate of the cluster characteristics.</p>
 <p>The <em>k</em>-means algorithm is simple enough that it can be written with just a few handfulls of lines of code, see the example below from the work of VanderPlas <a class="bibtex reference internal" href="zreferences.html#vanderplas-python-2016" id="id1">[Van16]</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -379,7 +379,7 @@ Each repeatition will always result in an better estimate of the cluster charact
 </div>
 <p>There are some important issues that we need to be aware of when using a simple E-M algorithm:</p>
 <ul class="simple">
-<li><p>The globally optimal result may not be achieved: As is the cause with all optimisations, although the result is improving, it may not be moving towards to global optimium solution.</p></li>
+<li><p>The globally optimal result may not be achieved: As is the case with all optimisations, although the result is improving, it may not be moving towards to global optimium solution.</p></li>
 <li><p>The number of clusters must be selected beforehand: It is necessary that we have some <em>a priori</em> knowledge about our dataset to effectively apply a <em>k</em>-means clustering, as we must now at the beginning how many clusters we expect to find.</p></li>
 <li><p><em>k</em>-means is limited to linear cluster boundaries: The fact that k-means is finding samples as close as possible in cartesian space means that the clusters cannot have more complex geometries.</p></li>
 <li><p><em>k</em>-means can be slow for large numbers of samples: Each iteration must access every point in the dataset, this means that this algorithm can be slow for very large datasets.</p></li>

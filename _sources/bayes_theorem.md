@@ -11,7 +11,7 @@ For our model selection problems, we will write Bayes' theorem with a slightly d
 
 $$ P(H_x|\mathbf{D}) = \frac{P(\mathbf{D}|H_x)P(H_x)}{P(\mathbf{D})}, $$
 
-where, $H_x$ is our model (hypothesis), $P(\mathbf{D}|H_x)$ is the evidence for this model, $P(H_x)$ is the prior porbability for the model, $P(H_x|\mathbf{D})$ is the posterior probability, and $P(\mathbf{D})$ is the probability associated with the measured data.
+where, $H_x$ is our model (hypothesis), $P(\mathbf{D}|H_x)$ is the evidence for this model, $P(H_x)$ is the prior probability for the model, $P(H_x|\mathbf{D})$ is the posterior probability, and $P(\mathbf{D})$ is the probability associated with the measured data.
 This final object is a normalisation factor, and can be found as the sum of the evidence for every possible model.
 However, it is typically not feasible to evaluate the evidence for **every** model, therefore we cannot truly quantify the posterior probability.
 
@@ -46,6 +46,6 @@ $$ P(\mathbf{D}|H) = \iint_{\mathbf{R}} \mathcal{L}(\mathbf{X}|H)P(\mathbf{X}|H)
 
 where, $\mathbf{X}$ is a vector of length $M$ of the parameters that are varying in the model, $\mathbf{R}$ is a $2\times M$ matrix describing the range over which the integral should be evaluated.
 As the shape of the likelihood function is not known *a priori*, however, the work of Sivia has involved assuming a Gaussian shape with some success {cite}`sivia_bayesian_1998,sivia_data_2005`.
-To fully quantify the evidence it is necessary that sampling to evaluate this integral, but as $M$ increases, this will be more computationally intensive to achieve.
+To fully quantify the evidence it is necessary that we use a sampling method to evaluate this integral, but as $M$ increases, this will be more computationally intensive to achieve.
 However, a variety of sampling algorithms have been developed to find the evidence for a given model {cite}`goodman_bayesian_2013`.
 We will look at the nested sampling approach in this workshop.

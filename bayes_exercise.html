@@ -322,7 +322,7 @@
                 
   <div class="section" id="how-many-layers">
 <h1>How many layers?<a class="headerlink" href="#how-many-layers" title="Permalink to this headline">¶</a></h1>
-<p>Neutron reflectometry allows us to obtain structural information about layered materials, such as magnetic multilayers or biological memebranes <a class="bibtex reference internal" href="zreferences.html#toperverg-polarized-2015" id="id1">[Top15]</a><a class="bibtex reference internal" href="zreferences.html#gerelli-phase-2019" id="id2">[Ger19]</a>.
+<p>Neutron reflectometry allows us to obtain structural information about layered materials, such as magnetic multilayers or biological membranes <a class="bibtex reference internal" href="zreferences.html#toperverg-polarized-2015" id="id1">[Top15]</a><a class="bibtex reference internal" href="zreferences.html#gerelli-phase-2019" id="id2">[Ger19]</a>.
 However, as with all scattering techniques, the recovery of structural information from a reflectometry dataset is an ill-posed problem.
 Hence the application of a model-dependent analysis approach.</p>
 <p>In this exercise, you will investigate the effect of instrumental background on the analysis of reflectometry data from a phospholipid monolayer.
@@ -336,6 +336,11 @@ Let’s first take a look at the data files, where hopefully see that as we incr
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">dynesty</span>
 <span class="kn">from</span> <span class="nn">refnx_imports</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
 </pre></div>
 </div>
 </div>
@@ -361,7 +366,7 @@ Let’s first take a look at the data files, where hopefully see that as we incr
 <img alt="_images/bayes_exercise_2_0.png" src="_images/bayes_exercise_2_0.png" />
 </div>
 </div>
-<p>The focus of this exercise, is not to show you how to use the <code class="docutils literal notranslate"><span class="pre">refnx</span></code> package, so we have obfusigated some aspects of this within a seperate piece of Python code (this is available <span class="xref myst">here</span>.
+<p>The focus of this exercise, is not to show you how to use the <code class="docutils literal notranslate"><span class="pre">refnx</span></code> package, so we have hidden some aspects of this within a piece of Python code (this is available <a class="reference external" href="https://raw.githubusercontent.com/arm61/trad_ml_methods/main/refnx_imports.py">here</a>).
 We can import the fitting objective for each of the layers as shown below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -373,7 +378,7 @@ We can import the fitting objective for each of the layers as shown below.</p>
 </div>
 <p>We can visualise the structure of these two models by plotting the scattering length density as a function of the depth into the interface.
 Note, that there is some “interfacial roughness” between the layers, which is due to the interfaces between the layers not being atomically smooth (for example, water has an inherent roughness of ~3 Å).
-Typically this roughness values is the same for all of the individual layers in a monolayer system.</p>
+Typically this roughness value is the same for all of the individual layers in a monolayer system.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">objective1</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">sld_profile</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;One layer&#39;</span><span class="p">)</span>

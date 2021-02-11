@@ -2,7 +2,7 @@
 
 We just looked at how the `scipy.optimize.curve_fit` function can be used to obtain the optimal parameters the agreement between some model and data.
 To achieve this, the `curve_fit` function is maximising the likelihood of the model to the data, $\mathcal{L}\big[\mathbf{D} | M(\mathbf{X})\big]$.
-For the specific case of Gaussian uncertainties, this may be called minimising the $\chi^2$-statisic.
+For the specific case of Gaussian uncertainties, this may be called minimising the $\chi^2$-statistic.
 
 The likelihood, given the model $M$ and a set of parameters $\mathbf{X}$, of the data $\mathbf{D}$ where these data are assumed to have Gaussian uncertainties can be found as,
 

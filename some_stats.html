@@ -335,6 +335,7 @@
 <h1>Some statistics<a class="headerlink" href="#some-statistics" title="Permalink to this headline">¶</a></h1>
 <center>
   <img src="https://miro.medium.com/max/500/1*x7P7gqjo8k2_bj2rTQWAfg.jpeg" alt="A meme about machine learning being a fancy name for statistics" class="bg-primary" width="500px">
+    <i>Original comic from [sandserif](https://www.instagram.com/sandserifcomics/)
 </center><br>
 <p>While the above image is <a class="reference external" href="https://towardsdatascience.com/no-machine-learning-is-not-just-glorified-statistics-26d3952234e3">hyperbolic</a>, learning about machine learning methods benefits from some basic grounding in statistics.
 Therefore, we will <em>quickly</em> introduce some basics of statistical modelling for data analysis before moving on to look at our traditional machine learning methods.</p>
@@ -367,7 +368,7 @@ Below, we read in and plot some <a class="reference internal" href="example.html
 <p>The aim is to model this as a Lorentzian funtion with some uniform background added (for simplicity we will ignore the resolution function).
 We can describe this mathematically as follows,</p>
 <div class="math notranslate nohighlight">
-\[ y = \frac{A}{\pi\gamma \big(1 + \frac{x - x_0}{\gamma}\big)^2} + b, \]</div>
+\[ y = \frac{A}{\pi\gamma \Big[1 + \big(\frac{x - x_0}{\gamma}\big)^2\Big]} + b, \]</div>
 <p>where, <span class="math notranslate nohighlight">\(A\)</span> is a scale factor, <span class="math notranslate nohighlight">\(\gamma\)</span> is half of the full width at half maximum, <span class="math notranslate nohighlight">\(x_0\)</span> is the peak centre, and <span class="math notranslate nohighlight">\(b\)</span> is the uniform background.
 Above, we have used <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> in lieu of <span class="math notranslate nohighlight">\(\hbar\omega\)</span> and <span class="math notranslate nohighlight">\(S(q, \omega)\)</span>.
 In order to use this function for analysis, we will write is as a Python function.</p>

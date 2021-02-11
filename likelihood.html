@@ -293,7 +293,7 @@
 <h1>Likelihood<a class="headerlink" href="#likelihood" title="Permalink to this headline">¶</a></h1>
 <p>We just looked at how the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> function can be used to obtain the optimal parameters the agreement between some model and data.
 To achieve this, the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function is maximising the likelihood of the model to the data, <span class="math notranslate nohighlight">\(\mathcal{L}\big[\mathbf{D} | M(\mathbf{X})\big]\)</span>.
-For the specific case of Gaussian uncertainties, this may be called minimising the <span class="math notranslate nohighlight">\(\chi^2\)</span>-statisic.</p>
+For the specific case of Gaussian uncertainties, this may be called minimising the <span class="math notranslate nohighlight">\(\chi^2\)</span>-statistic.</p>
 <p>The likelihood, given the model <span class="math notranslate nohighlight">\(M\)</span> and a set of parameters <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, of the data <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> where these data are assumed to have Gaussian uncertainties can be found as,</p>
 <div class="math notranslate nohighlight">
 \[ \ln\mathcal{L}\big[\mathbf{D} | M(\mathbf{X})\big] = -\frac{1}{2} \sum_n\Bigg({\bigg[\frac{y_n - M(\mathbf{X})}{\sigma_n}\bigg]^2 + \ln(2\pi\sigma_n)\Bigg)}, \]</div>

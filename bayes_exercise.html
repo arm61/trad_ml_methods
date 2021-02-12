@@ -339,11 +339,6 @@ Let’s first take a look at the data files, where hopefully see that as we incr
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -441,6 +436,7 @@ This is shown below for the data with the lowest background for the two layer mo
     <span class="n">objective</span><span class="o">.</span><span class="n">prior_transform</span><span class="p">,</span> 
     <span class="n">ndim</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">objective</span><span class="o">.</span><span class="n">varying_parameters</span><span class="p">()))</span>
 <span class="n">nested</span><span class="o">.</span><span class="n">run_nested</span><span class="p">(</span><span class="n">print_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;logZ = </span><span class="si">{</span><span class="n">nested</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;logz&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

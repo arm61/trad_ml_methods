@@ -38,5 +38,6 @@ nested = dynesty.NestedSampler(
     objective.prior_transform, 
     ndim=len(objective.varying_parameters()))
 nested.run_nested(print_progress=False)
+print(f"logZ = {nested.results['logz'][-1]}")
 -------------------
 

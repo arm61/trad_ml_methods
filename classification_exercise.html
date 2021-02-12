@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Material Classification &#8212; Traditional Machine Learning Methods</title>
+    <title>Material classification &#8212; Traditional Machine Learning Methods</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -57,7 +57,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Clustering" href="clustering.html" />
-    <link rel="prev" title="Random Forests" href="random_forest.html" />
+    <link rel="prev" title="Random forests" href="random_forest.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -119,12 +119,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="random_forest.html">
-     Random Forests
+     Random forests
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Material Classification
+     Material classification
     </a>
    </li>
   </ul>
@@ -141,12 +141,12 @@
      <em>
       k
      </em>
-     -Means Clustering
+     -means clustering
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="gmm.html">
-     Gaussian Mixture Models
+     Gaussian mixture models
     </a>
    </li>
   </ul>
@@ -165,7 +165,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="wine_pca.html">
-     PCA in Action
+     PCA in action
     </a>
    </li>
    <li class="toctree-l2">
@@ -336,7 +336,7 @@
 </div>
 </div>
 <div class="section" id="material-classification">
-<h1>Material Classification<a class="headerlink" href="#material-classification" title="Permalink to this headline">¶</a></h1>
+<h1>Material classification<a class="headerlink" href="#material-classification" title="Permalink to this headline">¶</a></h1>
 <p>Neutron scattering can give complementary information about materials, such as the structural information from diffraction and electronic information from spectroscopy.
 In this exercise, we will look at using a random forest classification of structural and electronic information to create a model that can guess the <a class="reference external" href="https://en.wikipedia.org/wiki/Space_group">space group</a> for new materials.</p>
 <p>The first thing that we need is some data, I have obtained data for lithium, sodium, and potassium containing materials of the four most common space groups (<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_space_groups">space group numbers</a>: 2, 14, 15, 19).
@@ -545,93 +545,23 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>360</th>
-      <td>Li2ZrF6</td>
-      <td>15</td>
-      <td>5.4892</td>
-      <td>3.749542</td>
-      <td>194.060065</td>
-      <td>-3.650283</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>244</th>
-      <td>NaInI4</td>
+      <th>34</th>
+      <td>KGaI4</td>
       <td>14</td>
-      <td>2.4484</td>
-      <td>3.715767</td>
-      <td>1153.737028</td>
-      <td>-0.785825</td>
+      <td>2.6203</td>
+      <td>3.509591</td>
+      <td>1166.655896</td>
+      <td>-0.879453</td>
       <td>24</td>
     </tr>
     <tr>
-      <th>537</th>
-      <td>Na2Cr2O7</td>
+      <th>10</th>
+      <td>K4GeO4</td>
       <td>2</td>
-      <td>2.5253</td>
-      <td>2.654095</td>
-      <td>655.601817</td>
-      <td>-1.869509</td>
-      <td>44</td>
-    </tr>
-    <tr>
-      <th>391</th>
-      <td>K3(PbCl4)2</td>
-      <td>2</td>
-      <td>0.0906</td>
-      <td>2.619489</td>
-      <td>516.844749</td>
-      <td>-1.777504</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>395</th>
-      <td>Li4SiO4</td>
-      <td>2</td>
-      <td>4.9652</td>
-      <td>2.347341</td>
-      <td>169.562778</td>
-      <td>-2.681673</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>324</th>
-      <td>KH3O2</td>
-      <td>14</td>
-      <td>4.3876</td>
-      <td>1.897014</td>
-      <td>259.525117</td>
-      <td>-1.549213</td>
-      <td>24</td>
-    </tr>
-    <tr>
-      <th>198</th>
-      <td>K(SbSe2)2</td>
-      <td>2</td>
-      <td>1.1431</td>
-      <td>4.522739</td>
-      <td>439.452003</td>
-      <td>-0.491396</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>479</th>
-      <td>Na4SiO4</td>
-      <td>2</td>
-      <td>3.2269</td>
-      <td>2.568896</td>
-      <td>237.930444</td>
-      <td>-2.400403</td>
+      <td>2.7735</td>
+      <td>2.800433</td>
+      <td>347.509864</td>
+      <td>-1.967714</td>
       <td>18</td>
     </tr>
     <tr>
@@ -645,14 +575,84 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>24</td>
     </tr>
     <tr>
-      <th>326</th>
-      <td>LiGaCl4</td>
+      <th>224</th>
+      <td>Na3GeTe3</td>
       <td>14</td>
-      <td>4.4866</td>
-      <td>2.260421</td>
-      <td>641.983036</td>
-      <td>-1.770664</td>
+      <td>1.2201</td>
+      <td>3.796878</td>
+      <td>917.387618</td>
+      <td>-0.656211</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>378</th>
+      <td>KC2N3</td>
+      <td>14</td>
+      <td>4.5026</td>
+      <td>1.611816</td>
+      <td>433.272097</td>
+      <td>-0.278986</td>
       <td>24</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>377</th>
+      <td>KICl2</td>
+      <td>14</td>
+      <td>2.3549</td>
+      <td>2.578698</td>
+      <td>1220.449140</td>
+      <td>-1.373527</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>289</th>
+      <td>KCO3</td>
+      <td>14</td>
+      <td>0.0964</td>
+      <td>2.036152</td>
+      <td>323.298763</td>
+      <td>-1.780224</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>353</th>
+      <td>Li2ZrF6</td>
+      <td>14</td>
+      <td>6.0728</td>
+      <td>3.587579</td>
+      <td>405.642021</td>
+      <td>-3.694566</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Na4GeO4</td>
+      <td>2</td>
+      <td>2.8182</td>
+      <td>2.991720</td>
+      <td>253.762881</td>
+      <td>-2.027865</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Li2TbF6</td>
+      <td>14</td>
+      <td>0.3369</td>
+      <td>4.657029</td>
+      <td>409.049563</td>
+      <td>-3.408527</td>
+      <td>36</td>
     </tr>
   </tbody>
 </table>
@@ -695,54 +695,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>446</th>
-      <td>NaH9O5</td>
-      <td>19</td>
-      <td>4.5248</td>
-      <td>1.406606</td>
-      <td>529.151938</td>
-      <td>-1.431878</td>
-      <td>60</td>
-    </tr>
-    <tr>
-      <th>108</th>
-      <td>Li2OsO6</td>
+      <th>196</th>
+      <td>K2Sn2S5</td>
       <td>15</td>
-      <td>0.7718</td>
-      <td>4.338713</td>
-      <td>229.718671</td>
-      <td>-1.440653</td>
+      <td>1.8223</td>
+      <td>3.148606</td>
+      <td>502.012460</td>
+      <td>-1.122611</td>
       <td>18</td>
     </tr>
     <tr>
-      <th>173</th>
-      <td>K2Cr2O7</td>
+      <th>75</th>
+      <td>KPr3Te8</td>
+      <td>14</td>
+      <td>0.4766</td>
+      <td>5.881785</td>
+      <td>1674.288028</td>
+      <td>-1.152728</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>536</th>
+      <td>Li2SeO4</td>
       <td>2</td>
-      <td>2.7027</td>
-      <td>2.496509</td>
-      <td>782.700855</td>
-      <td>-1.942610</td>
-      <td>44</td>
+      <td>0.4035</td>
+      <td>2.512127</td>
+      <td>622.034508</td>
+      <td>-1.335199</td>
+      <td>42</td>
     </tr>
     <tr>
-      <th>233</th>
-      <td>LiAlCl4</td>
-      <td>14</td>
-      <td>5.5570</td>
-      <td>1.829212</td>
-      <td>638.119635</td>
-      <td>-2.042995</td>
-      <td>24</td>
+      <th>459</th>
+      <td>Na7Al3O8</td>
+      <td>2</td>
+      <td>2.7999</td>
+      <td>2.575011</td>
+      <td>477.031484</td>
+      <td>-2.487613</td>
+      <td>36</td>
     </tr>
     <tr>
-      <th>364</th>
-      <td>Na2CrF4</td>
+      <th>140</th>
+      <td>Li6Ge2O7</td>
       <td>14</td>
-      <td>1.1107</td>
-      <td>3.051178</td>
-      <td>189.358198</td>
-      <td>-2.931381</td>
-      <td>14</td>
+      <td>3.8132</td>
+      <td>3.141919</td>
+      <td>631.933943</td>
+      <td>-2.312390</td>
+      <td>60</td>
     </tr>
     <tr>
       <th>...</th>
@@ -755,54 +755,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>...</td>
     </tr>
     <tr>
-      <th>128</th>
-      <td>K3AlTe3</td>
+      <th>88</th>
+      <td>KPb2Cl5</td>
       <td>14</td>
-      <td>2.1198</td>
-      <td>3.142339</td>
-      <td>1114.114023</td>
-      <td>-0.940148</td>
-      <td>28</td>
+      <td>3.6184</td>
+      <td>4.492085</td>
+      <td>932.669017</td>
+      <td>-1.739016</td>
+      <td>32</td>
     </tr>
     <tr>
-      <th>103</th>
-      <td>NaPO4</td>
-      <td>2</td>
-      <td>0.0962</td>
-      <td>2.091564</td>
-      <td>374.607822</td>
-      <td>-1.591463</td>
+      <th>158</th>
+      <td>Na2Al2Sb3</td>
+      <td>14</td>
+      <td>0.7579</td>
+      <td>3.825319</td>
+      <td>1615.594232</td>
+      <td>-0.287200</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>435</th>
+      <td>KAl2Br7</td>
+      <td>14</td>
+      <td>4.1280</td>
+      <td>2.783258</td>
+      <td>1556.906544</td>
+      <td>-1.296916</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>NaC2N3</td>
+      <td>14</td>
+      <td>4.6266</td>
+      <td>1.662121</td>
+      <td>355.786094</td>
+      <td>-0.247724</td>
       <td>24</td>
     </tr>
     <tr>
-      <th>156</th>
-      <td>LiSb3O8</td>
+      <th>520</th>
+      <td>KDy2Cl7</td>
       <td>14</td>
-      <td>0.9891</td>
-      <td>5.859429</td>
-      <td>283.518592</td>
-      <td>-1.970340</td>
-      <td>24</td>
-    </tr>
-    <tr>
-      <th>294</th>
-      <td>Na2CO3</td>
-      <td>14</td>
-      <td>4.1922</td>
-      <td>2.487682</td>
-      <td>1697.946102</td>
-      <td>-2.089964</td>
-      <td>144</td>
-    </tr>
-    <tr>
-      <th>263</th>
-      <td>LiInI4</td>
-      <td>14</td>
-      <td>2.2465</td>
-      <td>4.096333</td>
-      <td>1020.527343</td>
-      <td>-0.748525</td>
-      <td>24</td>
+      <td>4.5419</td>
+      <td>3.441655</td>
+      <td>1181.637260</td>
+      <td>-2.659165</td>
+      <td>40</td>
     </tr>
   </tbody>
 </table>
@@ -837,7 +837,7 @@ For this we will use the <code class="docutils literal notranslate"><span class=
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7ff2398fffd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7f012d976450&gt;
 </pre></div>
 </div>
 <img alt="_images/classification_exercise_15_1.png" src="_images/classification_exercise_15_1.png" />
@@ -880,7 +880,7 @@ In this exercise, you should try different combinations of the columns of intere
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="random_forest.html" title="previous page">Random Forests</a>
+    <a class='left-prev' id="prev-link" href="random_forest.html" title="previous page">Random forests</a>
     <a class='right-next' id="next-link" href="clustering.html" title="next page">Clustering</a>
 
     </div>

@@ -9,6 +9,7 @@
   sections:
     - file: decision_trees
     - file: random_forest
+    - file: classification_exercise
 - file: clustering
   sections:
     - file: k_means

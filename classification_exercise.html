@@ -332,6 +332,7 @@
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">normalize</span>
 </pre></div>
 </div>
 </div>
@@ -546,54 +547,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>144</th>
-      <td>LiGaBr4</td>
+      <th>358</th>
+      <td>Na3NiF6</td>
       <td>14</td>
-      <td>3.4374</td>
-      <td>3.387164</td>
-      <td>777.096599</td>
-      <td>-1.099603</td>
+      <td>0.6436</td>
+      <td>3.159754</td>
+      <td>253.990938</td>
+      <td>-2.582011</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>NaTaCl6</td>
+      <td>14</td>
+      <td>2.9020</td>
+      <td>2.938232</td>
+      <td>941.890124</td>
+      <td>-1.918418</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>440</th>
+      <td>NaCO2</td>
+      <td>14</td>
+      <td>3.4264</td>
+      <td>2.236321</td>
+      <td>198.996272</td>
+      <td>-1.892087</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Li3TiF6</td>
+      <td>15</td>
+      <td>0.1578</td>
+      <td>2.727679</td>
+      <td>667.266147</td>
+      <td>-3.387537</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>539</th>
+      <td>LiTa3O8</td>
+      <td>15</td>
+      <td>3.3841</td>
+      <td>7.889695</td>
+      <td>285.303789</td>
+      <td>-3.263699</td>
       <td>24</td>
-    </tr>
-    <tr>
-      <th>454</th>
-      <td>Na2In2Sb3</td>
-      <td>14</td>
-      <td>0.6921</td>
-      <td>4.713662</td>
-      <td>1806.208707</td>
-      <td>-0.244674</td>
-      <td>56</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Na4Ge2Te5</td>
-      <td>2</td>
-      <td>1.1111</td>
-      <td>4.090721</td>
-      <td>710.568546</td>
-      <td>-0.588707</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>260</th>
-      <td>K2NbF7</td>
-      <td>14</td>
-      <td>4.5287</td>
-      <td>3.009548</td>
-      <td>671.138997</td>
-      <td>-3.397305</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <th>69</th>
-      <td>Li2Mo4O13</td>
-      <td>2</td>
-      <td>2.3935</td>
-      <td>3.768947</td>
-      <td>800.498867</td>
-      <td>-2.124830</td>
-      <td>57</td>
     </tr>
     <tr>
       <th>...</th>
@@ -606,54 +607,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>...</td>
     </tr>
     <tr>
-      <th>217</th>
-      <td>K3YF6</td>
+      <th>504</th>
+      <td>Na3BP2</td>
       <td>14</td>
-      <td>6.6990</td>
-      <td>2.721977</td>
-      <td>390.664600</td>
-      <td>-3.611162</td>
-      <td>20</td>
+      <td>1.8451</td>
+      <td>1.686785</td>
+      <td>558.090367</td>
+      <td>-0.336530</td>
+      <td>24</td>
     </tr>
     <tr>
-      <th>149</th>
-      <td>K2Te2O5</td>
+      <th>526</th>
+      <td>K3SnSe3</td>
       <td>14</td>
-      <td>3.3858</td>
-      <td>4.004232</td>
-      <td>685.730691</td>
-      <td>-1.788456</td>
-      <td>36</td>
+      <td>1.6667</td>
+      <td>3.207165</td>
+      <td>979.361958</td>
+      <td>-1.001225</td>
+      <td>28</td>
     </tr>
     <tr>
-      <th>468</th>
-      <td>Na3GaS3</td>
+      <th>471</th>
+      <td>KC2N3</td>
       <td>14</td>
-      <td>2.6127</td>
-      <td>2.428033</td>
-      <td>1285.121007</td>
-      <td>-1.320319</td>
-      <td>56</td>
+      <td>3.7344</td>
+      <td>1.806278</td>
+      <td>1159.879490</td>
+      <td>-0.399168</td>
+      <td>72</td>
     </tr>
     <tr>
-      <th>228</th>
-      <td>KAlTe2</td>
-      <td>15</td>
-      <td>1.8940</td>
-      <td>3.598887</td>
-      <td>1185.917089</td>
-      <td>-0.793539</td>
-      <td>32</td>
+      <th>81</th>
+      <td>K3AgO2</td>
+      <td>19</td>
+      <td>1.8096</td>
+      <td>3.127503</td>
+      <td>2184.630390</td>
+      <td>-1.194820</td>
+      <td>96</td>
     </tr>
     <tr>
-      <th>66</th>
-      <td>NaB3O5</td>
+      <th>334</th>
+      <td>LiAuI4</td>
       <td>14</td>
-      <td>5.2407</td>
-      <td>2.141239</td>
-      <td>1260.222548</td>
-      <td>-2.796747</td>
-      <td>108</td>
+      <td>0.7861</td>
+      <td>5.433153</td>
+      <td>434.928220</td>
+      <td>-0.443343</td>
+      <td>12</td>
     </tr>
   </tbody>
 </table>
@@ -696,54 +697,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>397</th>
-      <td>K(IO3)2</td>
+      <th>119</th>
+      <td>LiHoO2</td>
       <td>14</td>
-      <td>1.5705</td>
-      <td>4.093788</td>
-      <td>1261.989608</td>
-      <td>-1.049268</td>
-      <td>72</td>
+      <td>4.4183</td>
+      <td>6.480360</td>
+      <td>208.960166</td>
+      <td>-3.310827</td>
+      <td>16</td>
     </tr>
     <tr>
-      <th>241</th>
-      <td>Na3Sb5F18</td>
-      <td>14</td>
-      <td>4.3910</td>
-      <td>4.050385</td>
-      <td>1672.254879</td>
-      <td>-2.805940</td>
-      <td>104</td>
-    </tr>
-    <tr>
-      <th>367</th>
-      <td>Na3MnF6</td>
-      <td>14</td>
-      <td>1.6666</td>
-      <td>2.983211</td>
-      <td>264.841173</td>
-      <td>-2.799496</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>206</th>
-      <td>Na2Se2O7</td>
-      <td>2</td>
-      <td>2.9536</td>
-      <td>3.113166</td>
-      <td>336.992350</td>
-      <td>-1.505928</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>522</th>
-      <td>NaSbS2</td>
+      <th>394</th>
+      <td>KSbS2</td>
       <td>15</td>
-      <td>1.3777</td>
-      <td>3.493647</td>
-      <td>198.562134</td>
-      <td>-1.012032</td>
+      <td>1.9033</td>
+      <td>2.996772</td>
+      <td>249.336175</td>
+      <td>-1.070781</td>
       <td>8</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>Na2Si2O5</td>
+      <td>14</td>
+      <td>4.4603</td>
+      <td>2.390903</td>
+      <td>506.023176</td>
+      <td>-2.912838</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>Na6Sn2Se7</td>
+      <td>15</td>
+      <td>1.4179</td>
+      <td>3.518358</td>
+      <td>876.039743</td>
+      <td>-0.861860</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>Na3(PO4)2</td>
+      <td>14</td>
+      <td>0.2319</td>
+      <td>2.396949</td>
+      <td>717.467982</td>
+      <td>-2.136394</td>
+      <td>52</td>
     </tr>
     <tr>
       <th>...</th>
@@ -756,67 +757,68 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>...</td>
     </tr>
     <tr>
-      <th>296</th>
-      <td>Na2Fe2F7</td>
-      <td>15</td>
-      <td>1.4241</td>
-      <td>3.240608</td>
-      <td>1191.503600</td>
-      <td>-2.878034</td>
-      <td>88</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>K2(TcSe2)3</td>
-      <td>15</td>
-      <td>0.9366</td>
-      <td>5.030946</td>
-      <td>1116.882489</td>
-      <td>-0.747562</td>
-      <td>44</td>
-    </tr>
-    <tr>
-      <th>237</th>
-      <td>K3MoCl6</td>
+      <th>505</th>
+      <td>Na2ZnO2</td>
       <td>14</td>
-      <td>1.6431</td>
-      <td>2.448448</td>
-      <td>1155.526181</td>
-      <td>-1.767765</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <th>312</th>
-      <td>Na3AlH6</td>
-      <td>14</td>
-      <td>2.8147</td>
-      <td>1.482791</td>
-      <td>228.450912</td>
-      <td>-0.264444</td>
+      <td>1.4570</td>
+      <td>3.489916</td>
+      <td>272.900908</td>
+      <td>-1.663912</td>
       <td>20</td>
     </tr>
     <tr>
-      <th>538</th>
-      <td>K4SnO4</td>
+      <th>480</th>
+      <td>RbLiF2</td>
+      <td>15</td>
+      <td>6.1608</td>
+      <td>3.242957</td>
+      <td>267.093984</td>
+      <td>-3.028814</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>509</th>
+      <td>Na3BS3</td>
+      <td>15</td>
+      <td>2.6404</td>
+      <td>1.964923</td>
+      <td>297.430370</td>
+      <td>-1.235997</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>K2Te2O5</td>
+      <td>14</td>
+      <td>3.3858</td>
+      <td>4.004232</td>
+      <td>685.730691</td>
+      <td>-1.788456</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>519</th>
+      <td>K4WO5</td>
       <td>2</td>
-      <td>2.3423</td>
-      <td>2.977324</td>
-      <td>378.252471</td>
-      <td>-1.839865</td>
-      <td>18</td>
+      <td>3.2324</td>
+      <td>3.695666</td>
+      <td>1132.908776</td>
+      <td>-2.086238</td>
+      <td>60</td>
     </tr>
   </tbody>
 </table>
 <p>109 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>We then define the columns of interest and segment our data into the <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> elements.</p>
+<p>We then define the columns of interest and segment our data into the <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> elements.
+Note, the normalisation is present to ensure that the large range of the volume doesn’t influence heavily the classification.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;band_gap&#39;</span><span class="p">,</span> <span class="s1">&#39;formation_energy_per_atom&#39;</span><span class="p">]</span>
-<span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">columns</span><span class="p">])</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;spacegroup.number&#39;</span><span class="p">]</span>
-<span class="n">X_validate</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">X_validate</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">validate</span><span class="p">[</span><span class="n">columns</span><span class="p">])</span>
 <span class="n">y_validate</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[</span><span class="s1">&#39;spacegroup.number&#39;</span><span class="p">]</span>
 </pre></div>
 </div>

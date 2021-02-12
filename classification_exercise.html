@@ -1,0 +1,909 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Material Classification &#8212; Traditional Machine Learning Methods</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Clustering" href="clustering.html" />
+    <link rel="prev" title="Random Forests" href="random_forest.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Traditional Machine Learning Methods</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Traditional Machine Learning Methods
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="some_stats.html">
+   Some statistics
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="likelihood.html">
+     Likelihood
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="classification.html">
+   Classification
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="decision_trees.html">
+     Decision trees
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random_forest.html">
+     Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Material Classification
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="clustering.html">
+   Clustering
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="k_means.html">
+     <em>
+      k
+     </em>
+     -Means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gmm.html">
+     Gaussian Mixture Models
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="dimensionality_reduction.html">
+   Dimensionality reduction
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="pca.html">
+     Principal Component Analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="wine_pca.html">
+     PCA in Action
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pca_exercise.html">
+     PCA for edge detection
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="bayesian_model_selection.html">
+   Bayesian model selection
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes_theorem.html">
+     Bayes’ theorem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested_sampling.html">
+     Nested sampling
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bayes_exercise.html">
+     How many layers?
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="zreferences.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/classification_exercise.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/arm61/trad_ml_methods"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/arm61/trad_ml_methods/issues/new?title=Issue%20on%20page%20%2Fclassification_exercise.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/arm61/trad_ml_methods/main?urlpath=tree/classification_exercise.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="material-classification">
+<h1>Material Classification<a class="headerlink" href="#material-classification" title="Permalink to this headline">¶</a></h1>
+<p>Neutron scattering can give complementary information about materials, such as the structural information from diffraction and electronic information from spectroscopy.
+In this exercise, we will look at using a random forest classification of structural and electronic information to create a model that can guess the <a class="reference external" href="https://en.wikipedia.org/wiki/Space_group">space group</a> for new materials.</p>
+<p>The first thing that we need is some data, I have obtained data for lithium, sodium, and potassium containing materials of the four most common space groups (<a class="reference external" href="https://en.wikipedia.org/wiki/List_of_space_groups">space group numbers</a>: 2, 14, 15, 19).
+This data can be found in the file <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">materials_data.csv</span></code></span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;materials_data.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This data is read in as a <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> so it can be visualised as so.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pretty_formula</th>
+      <th>spacegroup.number</th>
+      <th>band_gap</th>
+      <th>density</th>
+      <th>volume</th>
+      <th>formation_energy_per_atom</th>
+      <th>nsites</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>KAl9O14</td>
+      <td>14</td>
+      <td>4.1426</td>
+      <td>3.142646</td>
+      <td>534.648960</td>
+      <td>-3.364229</td>
+      <td>48</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>K2Se2O</td>
+      <td>15</td>
+      <td>0.0975</td>
+      <td>3.303683</td>
+      <td>253.443517</td>
+      <td>-0.940536</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>K2AgF4</td>
+      <td>14</td>
+      <td>0.6151</td>
+      <td>3.343987</td>
+      <td>260.263084</td>
+      <td>-2.371859</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Na2TeS3</td>
+      <td>14</td>
+      <td>1.7919</td>
+      <td>2.904619</td>
+      <td>616.908734</td>
+      <td>-1.000993</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>K3Zn2Cl7</td>
+      <td>2</td>
+      <td>3.9024</td>
+      <td>2.345705</td>
+      <td>702.644832</td>
+      <td>-1.909423</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>537</th>
+      <td>Na2Cr2O7</td>
+      <td>2</td>
+      <td>2.5253</td>
+      <td>2.654095</td>
+      <td>655.601817</td>
+      <td>-1.869509</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>538</th>
+      <td>K4SnO4</td>
+      <td>2</td>
+      <td>2.3423</td>
+      <td>2.977324</td>
+      <td>378.252471</td>
+      <td>-1.839865</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>539</th>
+      <td>LiTa3O8</td>
+      <td>15</td>
+      <td>3.3841</td>
+      <td>7.889695</td>
+      <td>285.303789</td>
+      <td>-3.263699</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>540</th>
+      <td>LiSmO2</td>
+      <td>14</td>
+      <td>3.7655</td>
+      <td>6.485182</td>
+      <td>193.881819</td>
+      <td>-3.185751</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>541</th>
+      <td>K4UO5</td>
+      <td>2</td>
+      <td>2.1910</td>
+      <td>4.207670</td>
+      <td>374.454975</td>
+      <td>-2.645721</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+<p>542 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>The first thing to do is separate our data into training and validation data (this process is common in machine learning methods).
+For this we will use the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> function <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="p">,</span> <span class="n">validate</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have split the data, which consisted of data about 542 materials, so that 80 % will be used to train and the remaining 20 % is reserved for validation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pretty_formula</th>
+      <th>spacegroup.number</th>
+      <th>band_gap</th>
+      <th>density</th>
+      <th>volume</th>
+      <th>formation_energy_per_atom</th>
+      <th>nsites</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>360</th>
+      <td>Li2ZrF6</td>
+      <td>15</td>
+      <td>5.4892</td>
+      <td>3.749542</td>
+      <td>194.060065</td>
+      <td>-3.650283</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>NaInI4</td>
+      <td>14</td>
+      <td>2.4484</td>
+      <td>3.715767</td>
+      <td>1153.737028</td>
+      <td>-0.785825</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>537</th>
+      <td>Na2Cr2O7</td>
+      <td>2</td>
+      <td>2.5253</td>
+      <td>2.654095</td>
+      <td>655.601817</td>
+      <td>-1.869509</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>391</th>
+      <td>K3(PbCl4)2</td>
+      <td>2</td>
+      <td>0.0906</td>
+      <td>2.619489</td>
+      <td>516.844749</td>
+      <td>-1.777504</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>395</th>
+      <td>Li4SiO4</td>
+      <td>2</td>
+      <td>4.9652</td>
+      <td>2.347341</td>
+      <td>169.562778</td>
+      <td>-2.681673</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>324</th>
+      <td>KH3O2</td>
+      <td>14</td>
+      <td>4.3876</td>
+      <td>1.897014</td>
+      <td>259.525117</td>
+      <td>-1.549213</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>198</th>
+      <td>K(SbSe2)2</td>
+      <td>2</td>
+      <td>1.1431</td>
+      <td>4.522739</td>
+      <td>439.452003</td>
+      <td>-0.491396</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>479</th>
+      <td>Na4SiO4</td>
+      <td>2</td>
+      <td>3.2269</td>
+      <td>2.568896</td>
+      <td>237.930444</td>
+      <td>-2.400403</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>K3Zn2Cl7</td>
+      <td>2</td>
+      <td>3.9024</td>
+      <td>2.345705</td>
+      <td>702.644832</td>
+      <td>-1.909423</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>326</th>
+      <td>LiGaCl4</td>
+      <td>14</td>
+      <td>4.4866</td>
+      <td>2.260421</td>
+      <td>641.983036</td>
+      <td>-1.770664</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+<p>433 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pretty_formula</th>
+      <th>spacegroup.number</th>
+      <th>band_gap</th>
+      <th>density</th>
+      <th>volume</th>
+      <th>formation_energy_per_atom</th>
+      <th>nsites</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>446</th>
+      <td>NaH9O5</td>
+      <td>19</td>
+      <td>4.5248</td>
+      <td>1.406606</td>
+      <td>529.151938</td>
+      <td>-1.431878</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>Li2OsO6</td>
+      <td>15</td>
+      <td>0.7718</td>
+      <td>4.338713</td>
+      <td>229.718671</td>
+      <td>-1.440653</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>K2Cr2O7</td>
+      <td>2</td>
+      <td>2.7027</td>
+      <td>2.496509</td>
+      <td>782.700855</td>
+      <td>-1.942610</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>233</th>
+      <td>LiAlCl4</td>
+      <td>14</td>
+      <td>5.5570</td>
+      <td>1.829212</td>
+      <td>638.119635</td>
+      <td>-2.042995</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>Na2CrF4</td>
+      <td>14</td>
+      <td>1.1107</td>
+      <td>3.051178</td>
+      <td>189.358198</td>
+      <td>-2.931381</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>K3AlTe3</td>
+      <td>14</td>
+      <td>2.1198</td>
+      <td>3.142339</td>
+      <td>1114.114023</td>
+      <td>-0.940148</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>NaPO4</td>
+      <td>2</td>
+      <td>0.0962</td>
+      <td>2.091564</td>
+      <td>374.607822</td>
+      <td>-1.591463</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>LiSb3O8</td>
+      <td>14</td>
+      <td>0.9891</td>
+      <td>5.859429</td>
+      <td>283.518592</td>
+      <td>-1.970340</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>Na2CO3</td>
+      <td>14</td>
+      <td>4.1922</td>
+      <td>2.487682</td>
+      <td>1697.946102</td>
+      <td>-2.089964</td>
+      <td>144</td>
+    </tr>
+    <tr>
+      <th>263</th>
+      <td>LiInI4</td>
+      <td>14</td>
+      <td>2.2465</td>
+      <td>4.096333</td>
+      <td>1020.527343</td>
+      <td>-0.748525</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+<p>109 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>We then define the columns of interest and segment our data into the <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;band_gap&#39;</span><span class="p">,</span> <span class="s1">&#39;formation_energy_per_atom&#39;</span><span class="p">]</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;spacegroup.number&#39;</span><span class="p">]</span>
+<span class="n">X_validate</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">y_validate</span> <span class="o">=</span> <span class="n">validate</span><span class="p">[</span><span class="s1">&#39;spacegroup.number&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the data split up, we can define our random forest model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see how well our model managed to classify the validation data?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_validate</span><span class="p">,</span> <span class="n">y_validate</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7ff2398fffd0&gt;
+</pre></div>
+</div>
+<img alt="_images/classification_exercise_15_1.png" src="_images/classification_exercise_15_1.png" />
+</div>
+</div>
+<p>The confusion matrix allows us to compare the actual space group of the validation data, with that from the classification.
+For a perfect classification, you would have an <a class="reference external" href="https://en.wikipedia.org/wiki/Identity_matrix">identity matrix</a> with the dimension of the number of labels.</p>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>It is clear from the above confusion matrix, that our current selection of columns of interest is not sufficient to accurately classify the data.
+In this exercise, you should try different combinations of the columns of interest to see which give the best classification of the space group for these materials.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="random_forest.html" title="previous page">Random Forests</a>
+    <a class='right-next' id="next-link" href="clustering.html" title="next page">Clustering</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew R. McCluskey<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

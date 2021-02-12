@@ -328,6 +328,7 @@
   <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">plot_confusion_matrix</span>
@@ -545,54 +546,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>303</th>
-      <td>K4SiO4</td>
+      <th>144</th>
+      <td>LiGaBr4</td>
       <td>14</td>
-      <td>3.2937</td>
-      <td>2.492700</td>
-      <td>662.100652</td>
-      <td>-2.329418</td>
-      <td>36</td>
+      <td>3.4374</td>
+      <td>3.387164</td>
+      <td>777.096599</td>
+      <td>-1.099603</td>
+      <td>24</td>
     </tr>
     <tr>
-      <th>44</th>
-      <td>Na2Sb4O7</td>
-      <td>15</td>
-      <td>3.0951</td>
-      <td>4.298064</td>
-      <td>498.397974</td>
-      <td>-1.865226</td>
-      <td>26</td>
+      <th>454</th>
+      <td>Na2In2Sb3</td>
+      <td>14</td>
+      <td>0.6921</td>
+      <td>4.713662</td>
+      <td>1806.208707</td>
+      <td>-0.244674</td>
+      <td>56</td>
     </tr>
     <tr>
-      <th>336</th>
-      <td>LiMoS2</td>
+      <th>24</th>
+      <td>Na4Ge2Te5</td>
       <td>2</td>
-      <td>1.0665</td>
-      <td>4.448424</td>
-      <td>249.372146</td>
-      <td>-1.313439</td>
-      <td>16</td>
+      <td>1.1111</td>
+      <td>4.090721</td>
+      <td>710.568546</td>
+      <td>-0.588707</td>
+      <td>22</td>
     </tr>
     <tr>
-      <th>353</th>
-      <td>Li2ZrF6</td>
+      <th>260</th>
+      <td>K2NbF7</td>
       <td>14</td>
-      <td>6.0728</td>
-      <td>3.587579</td>
-      <td>405.642021</td>
-      <td>-3.694566</td>
-      <td>36</td>
+      <td>4.5287</td>
+      <td>3.009548</td>
+      <td>671.138997</td>
+      <td>-3.397305</td>
+      <td>40</td>
     </tr>
     <tr>
-      <th>494</th>
-      <td>Na3InP2</td>
-      <td>14</td>
-      <td>0.6425</td>
-      <td>3.013490</td>
-      <td>1083.268498</td>
-      <td>-0.380711</td>
-      <td>48</td>
+      <th>69</th>
+      <td>Li2Mo4O13</td>
+      <td>2</td>
+      <td>2.3935</td>
+      <td>3.768947</td>
+      <td>800.498867</td>
+      <td>-2.124830</td>
+      <td>57</td>
     </tr>
     <tr>
       <th>...</th>
@@ -605,54 +606,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>...</td>
     </tr>
     <tr>
-      <th>207</th>
-      <td>Na2TeSe3</td>
+      <th>217</th>
+      <td>K3YF6</td>
       <td>14</td>
-      <td>1.2319</td>
-      <td>3.848153</td>
-      <td>708.479141</td>
-      <td>-0.628667</td>
-      <td>24</td>
+      <td>6.6990</td>
+      <td>2.721977</td>
+      <td>390.664600</td>
+      <td>-3.611162</td>
+      <td>20</td>
     </tr>
     <tr>
-      <th>222</th>
-      <td>K2Ga2As3</td>
+      <th>149</th>
+      <td>K2Te2O5</td>
       <td>14</td>
-      <td>1.0329</td>
-      <td>3.840272</td>
-      <td>1530.380673</td>
-      <td>-0.466051</td>
-      <td>56</td>
-    </tr>
-    <tr>
-      <th>512</th>
-      <td>Na3B7O12</td>
-      <td>2</td>
-      <td>4.9298</td>
-      <td>2.310421</td>
-      <td>483.896465</td>
-      <td>-2.774950</td>
-      <td>44</td>
-    </tr>
-    <tr>
-      <th>299</th>
-      <td>Na5GeAs3</td>
-      <td>14</td>
-      <td>0.4859</td>
-      <td>3.152216</td>
-      <td>868.886216</td>
-      <td>-0.399256</td>
+      <td>3.3858</td>
+      <td>4.004232</td>
+      <td>685.730691</td>
+      <td>-1.788456</td>
       <td>36</td>
     </tr>
     <tr>
-      <th>73</th>
-      <td>LiAsO3</td>
+      <th>468</th>
+      <td>Na3GaS3</td>
+      <td>14</td>
+      <td>2.6127</td>
+      <td>2.428033</td>
+      <td>1285.121007</td>
+      <td>-1.320319</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>228</th>
+      <td>KAlTe2</td>
       <td>15</td>
-      <td>2.9619</td>
-      <td>3.456178</td>
-      <td>249.569220</td>
-      <td>-1.960238</td>
-      <td>20</td>
+      <td>1.8940</td>
+      <td>3.598887</td>
+      <td>1185.917089</td>
+      <td>-0.793539</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>NaB3O5</td>
+      <td>14</td>
+      <td>5.2407</td>
+      <td>2.141239</td>
+      <td>1260.222548</td>
+      <td>-2.796747</td>
+      <td>108</td>
     </tr>
   </tbody>
 </table>
@@ -695,24 +696,14 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>81</th>
-      <td>K3AgO2</td>
-      <td>19</td>
-      <td>1.8096</td>
-      <td>3.127503</td>
-      <td>2184.630390</td>
-      <td>-1.194820</td>
-      <td>96</td>
-    </tr>
-    <tr>
-      <th>483</th>
-      <td>K3BAs2</td>
-      <td>15</td>
-      <td>1.3129</td>
-      <td>2.395346</td>
-      <td>385.368403</td>
-      <td>-0.343086</td>
-      <td>12</td>
+      <th>397</th>
+      <td>K(IO3)2</td>
+      <td>14</td>
+      <td>1.5705</td>
+      <td>4.093788</td>
+      <td>1261.989608</td>
+      <td>-1.049268</td>
+      <td>72</td>
     </tr>
     <tr>
       <th>241</th>
@@ -725,24 +716,34 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>104</td>
     </tr>
     <tr>
-      <th>366</th>
-      <td>Na5Ga3F14</td>
+      <th>367</th>
+      <td>Na3MnF6</td>
       <td>14</td>
-      <td>5.4154</td>
-      <td>3.416719</td>
-      <td>573.577513</td>
-      <td>-3.034718</td>
-      <td>44</td>
+      <td>1.6666</td>
+      <td>2.983211</td>
+      <td>264.841173</td>
+      <td>-2.799496</td>
+      <td>20</td>
     </tr>
     <tr>
-      <th>329</th>
-      <td>K2Te4O9</td>
-      <td>14</td>
-      <td>2.9336</td>
-      <td>4.428916</td>
-      <td>1098.685438</td>
-      <td>-1.691386</td>
-      <td>60</td>
+      <th>206</th>
+      <td>Na2Se2O7</td>
+      <td>2</td>
+      <td>2.9536</td>
+      <td>3.113166</td>
+      <td>336.992350</td>
+      <td>-1.505928</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>522</th>
+      <td>NaSbS2</td>
+      <td>15</td>
+      <td>1.3777</td>
+      <td>3.493647</td>
+      <td>198.562134</td>
+      <td>-1.012032</td>
+      <td>8</td>
     </tr>
     <tr>
       <th>...</th>
@@ -755,54 +756,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>...</td>
     </tr>
     <tr>
-      <th>330</th>
-      <td>KTe2F9</td>
-      <td>2</td>
-      <td>4.5324</td>
-      <td>3.702505</td>
-      <td>417.351002</td>
-      <td>-2.649456</td>
-      <td>24</td>
+      <th>296</th>
+      <td>Na2Fe2F7</td>
+      <td>15</td>
+      <td>1.4241</td>
+      <td>3.240608</td>
+      <td>1191.503600</td>
+      <td>-2.878034</td>
+      <td>88</td>
     </tr>
     <tr>
-      <th>334</th>
-      <td>LiAuI4</td>
-      <td>14</td>
-      <td>0.7861</td>
-      <td>5.433153</td>
-      <td>434.928220</td>
-      <td>-0.443343</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>215</th>
-      <td>K2RuO5</td>
-      <td>19</td>
-      <td>0.9515</td>
-      <td>3.003976</td>
-      <td>573.263321</td>
-      <td>-1.532849</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>K4As2Se5</td>
-      <td>14</td>
-      <td>1.2066</td>
-      <td>3.085058</td>
-      <td>1509.337179</td>
-      <td>-0.816420</td>
+      <th>55</th>
+      <td>K2(TcSe2)3</td>
+      <td>15</td>
+      <td>0.9366</td>
+      <td>5.030946</td>
+      <td>1116.882489</td>
+      <td>-0.747562</td>
       <td>44</td>
     </tr>
     <tr>
-      <th>408</th>
-      <td>KGaTe2</td>
-      <td>15</td>
-      <td>1.2481</td>
-      <td>4.045835</td>
-      <td>1195.247249</td>
-      <td>-0.697669</td>
-      <td>32</td>
+      <th>237</th>
+      <td>K3MoCl6</td>
+      <td>14</td>
+      <td>1.6431</td>
+      <td>2.448448</td>
+      <td>1155.526181</td>
+      <td>-1.767765</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>312</th>
+      <td>Na3AlH6</td>
+      <td>14</td>
+      <td>2.8147</td>
+      <td>1.482791</td>
+      <td>228.450912</td>
+      <td>-0.264444</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>538</th>
+      <td>K4SnO4</td>
+      <td>2</td>
+      <td>2.3423</td>
+      <td>2.977324</td>
+      <td>378.252471</td>
+      <td>-1.839865</td>
+      <td>18</td>
     </tr>
   </tbody>
 </table>
@@ -833,14 +834,12 @@ For this we will use the <code class="docutils literal notranslate"><span class=
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_validate</span><span class="p">,</span> <span class="n">y_validate</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x7f42b617d350&gt;
-</pre></div>
-</div>
-<img alt="_images/classification_exercise_15_1.png" src="_images/classification_exercise_15_1.png" />
+<img alt="_images/classification_exercise_15_0.png" src="_images/classification_exercise_15_0.png" />
 </div>
 </div>
 <p>The confusion matrix allows us to compare the actual space group of the validation data, with that from the classification.

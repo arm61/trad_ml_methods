@@ -342,7 +342,7 @@
 However, in order to complete a ToF measurement, it is important that we keep a track of the pulses from the neutron source.
 In this exercise, we will look at recovering the ToF from a series of neutron pulses, where the pulse start points have been lost.
 <em>Note, this is a slightly contrived exercise, but hopefully it will help with your understanding of clustering methods.</em></p>
-<p>The file <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">tof.txt</span></code></span> contains a numpy array consisting of absolute ToF and <em>θ</em>.
+<p>The file <a class="reference external" href="https://github.com/arm61/trad_ml_methods/raw/main/tof.txt"><code class="docutils literal notranslate"><span class="pre">tof.txt</span></code></a> contains a numpy array consisting of absolute ToF and <em>θ</em>.
 Let’s have a look at this data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -362,7 +362,7 @@ Let’s have a look at this data.</p>
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise, you should use <em>k</em>-means clustering to identify the different pulses from this data where the pulse data has been lost.
 You will need to try and determine how many pulses there are in the data.
-Once you have the cluster centers, you can normalise the data with respect to these (is you are stuggling with this there is some <a class="reference internal" href="clustering_help.html"><span class="doc std std-doc">help here</span></a>, but try and work it out with this first!), note we should also offset to account for the position of the first centre.</p>
+Once you have the cluster centers, you can normalise the data with respect to these (is you are stuggling with this there is some <a class="reference external" href="https://mccluskey.scot/trad_ml_methods/clustering_help.html">help here</a>, but try and work it out with this first!), note we should also offset to account for the position of the first centre.</p>
 <p>Once you have normalised the data, it should look something like this.</p>
 <p><img alt="Normalised ToF data by theta" src="_images/normalised_data.png" /></p>
 </div>

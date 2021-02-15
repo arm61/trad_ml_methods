@@ -7,6 +7,7 @@ During the working, it is suggested that you work through the material here.
 You can work along using one of these systems: 
 - [Colab](https://colab.research.google.com/)
 - [MyBinder](https://mybinder.org/v2/gh/arm61/trad_ml_methods/HEAD)
+
 Also, all of the code in this webpage is available on [Github](https://github.com/arm61/trad_ml_methods) (you will need this link if you are to use Colab). 
 If you want to find a particular page in the Github repository, look at the url for the page these should match the files in the repository. 
 

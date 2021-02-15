@@ -4,6 +4,7 @@
 - file: intro
 - file: some_stats
   sections:
+    - file: model_dep
     - file: likelihood
 - file: classification
   sections:

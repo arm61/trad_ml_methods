@@ -45,8 +45,6 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -147,6 +145,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="gmm.html">
      Gaussian mixture models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="clustering_exercise.html">
+     Recoving ToF
     </a>
    </li>
   </ul>
@@ -546,54 +549,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>199</th>
-      <td>Li3B11O18</td>
-      <td>14</td>
-      <td>5.5447</td>
-      <td>2.067239</td>
-      <td>1374.331245</td>
-      <td>-2.830720</td>
-      <td>128</td>
+      <th>6</th>
+      <td>Na2VO4</td>
+      <td>2</td>
+      <td>0.4122</td>
+      <td>2.542308</td>
+      <td>420.423758</td>
+      <td>-2.053663</td>
+      <td>28</td>
     </tr>
     <tr>
-      <th>256</th>
-      <td>Na2Si2O5</td>
+      <th>41</th>
+      <td>Na3HoCl6</td>
       <td>14</td>
-      <td>4.4754</td>
-      <td>2.475200</td>
-      <td>488.789742</td>
-      <td>-2.913949</td>
+      <td>5.4945</td>
+      <td>2.854663</td>
+      <td>519.589237</td>
+      <td>-2.356338</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>386</th>
+      <td>Li6B4O9</td>
+      <td>14</td>
+      <td>4.9280</td>
+      <td>2.044999</td>
+      <td>743.417176</td>
+      <td>-2.695463</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>Na4SnTe4</td>
+      <td>19</td>
+      <td>0.9417</td>
+      <td>3.996398</td>
+      <td>1198.442508</td>
+      <td>-0.701806</td>
       <td>36</td>
     </tr>
     <tr>
-      <th>493</th>
-      <td>Na4PbO4</td>
-      <td>2</td>
-      <td>1.3103</td>
-      <td>4.128879</td>
-      <td>292.106342</td>
-      <td>-1.620460</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>351</th>
-      <td>Na2TeO3</td>
+      <th>363</th>
+      <td>NaPO3</td>
       <td>14</td>
-      <td>3.3548</td>
-      <td>4.052902</td>
-      <td>363.135879</td>
-      <td>-1.865225</td>
-      <td>24</td>
-    </tr>
-    <tr>
-      <th>388</th>
-      <td>LiSbS2</td>
-      <td>15</td>
-      <td>0.9480</td>
-      <td>3.732484</td>
-      <td>171.576595</td>
-      <td>-1.002128</td>
-      <td>8</td>
+      <td>5.1702</td>
+      <td>2.496910</td>
+      <td>542.467149</td>
+      <td>-2.646415</td>
+      <td>40</td>
     </tr>
     <tr>
       <th>...</th>
@@ -606,54 +609,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>...</td>
     </tr>
     <tr>
-      <th>173</th>
-      <td>K2Cr2O7</td>
-      <td>2</td>
-      <td>2.7027</td>
-      <td>2.496509</td>
-      <td>782.700855</td>
-      <td>-1.942610</td>
-      <td>44</td>
+      <th>441</th>
+      <td>Li2SO4</td>
+      <td>14</td>
+      <td>6.0416</td>
+      <td>2.117665</td>
+      <td>344.846460</td>
+      <td>-2.414889</td>
+      <td>28</td>
     </tr>
     <tr>
-      <th>312</th>
-      <td>Na3AlH6</td>
+      <th>217</th>
+      <td>K3YF6</td>
       <td>14</td>
-      <td>2.8147</td>
-      <td>1.482791</td>
-      <td>228.450912</td>
-      <td>-0.264444</td>
+      <td>6.6990</td>
+      <td>2.721977</td>
+      <td>390.664600</td>
+      <td>-3.611162</td>
       <td>20</td>
     </tr>
     <tr>
-      <th>268</th>
-      <td>KZrF5</td>
+      <th>213</th>
+      <td>Li12Mo5O17</td>
       <td>2</td>
-      <td>5.5637</td>
-      <td>3.698060</td>
-      <td>607.037076</td>
-      <td>-3.827999</td>
-      <td>42</td>
+      <td>1.3118</td>
+      <td>4.182842</td>
+      <td>662.955856</td>
+      <td>-2.220343</td>
+      <td>68</td>
     </tr>
     <tr>
-      <th>131</th>
-      <td>Li3VF6</td>
-      <td>15</td>
-      <td>2.4336</td>
-      <td>2.802556</td>
-      <td>660.368524</td>
-      <td>-3.071169</td>
-      <td>60</td>
+      <th>419</th>
+      <td>Na2SbF5</td>
+      <td>19</td>
+      <td>4.8960</td>
+      <td>3.338285</td>
+      <td>522.754694</td>
+      <td>-2.901384</td>
+      <td>32</td>
     </tr>
     <tr>
-      <th>70</th>
-      <td>Na2PtO3</td>
-      <td>15</td>
-      <td>1.5696</td>
-      <td>6.799590</td>
-      <td>282.368973</td>
-      <td>-1.509202</td>
-      <td>24</td>
+      <th>269</th>
+      <td>Na2B4O7</td>
+      <td>2</td>
+      <td>4.8667</td>
+      <td>2.420928</td>
+      <td>828.110268</td>
+      <td>-2.751299</td>
+      <td>78</td>
     </tr>
   </tbody>
 </table>
@@ -696,54 +699,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
   </thead>
   <tbody>
     <tr>
-      <th>477</th>
-      <td>Rb2LiSn4</td>
+      <th>243</th>
+      <td>NaInBr4</td>
+      <td>19</td>
+      <td>3.1545</td>
+      <td>3.507702</td>
+      <td>866.174024</td>
+      <td>-1.080571</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>357</th>
+      <td>Li4P2O7</td>
+      <td>14</td>
+      <td>5.6533</td>
+      <td>2.258198</td>
+      <td>593.292328</td>
+      <td>-2.751962</td>
+      <td>52</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>K11Cd2Sb5</td>
       <td>2</td>
-      <td>0.9046</td>
-      <td>4.177577</td>
-      <td>2075.579017</td>
-      <td>-0.289447</td>
-      <td>56</td>
+      <td>0.5584</td>
+      <td>2.922942</td>
+      <td>1435.833430</td>
+      <td>-0.432297</td>
+      <td>36</td>
     </tr>
     <tr>
-      <th>174</th>
-      <td>NaMnF4</td>
+      <th>270</th>
+      <td>Na5Cr3F14</td>
       <td>14</td>
-      <td>2.0525</td>
-      <td>3.109560</td>
-      <td>164.391471</td>
-      <td>-2.932898</td>
-      <td>12</td>
+      <td>2.9191</td>
+      <td>3.066438</td>
+      <td>581.500755</td>
+      <td>-3.043457</td>
+      <td>44</td>
     </tr>
     <tr>
-      <th>69</th>
-      <td>Li2Mo4O13</td>
-      <td>2</td>
-      <td>2.3935</td>
-      <td>3.768947</td>
-      <td>800.498867</td>
-      <td>-2.124830</td>
-      <td>57</td>
-    </tr>
-    <tr>
-      <th>102</th>
-      <td>Na2AgF4</td>
+      <th>509</th>
+      <td>Na3BS3</td>
+      <td>15</td>
+      <td>2.6404</td>
+      <td>1.964923</td>
+      <td>297.430370</td>
+      <td>-1.235997</td>
       <td>14</td>
-      <td>0.5851</td>
-      <td>3.795482</td>
-      <td>201.113075</td>
-      <td>-2.335646</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>302</th>
-      <td>Na2Al2As3</td>
-      <td>14</td>
-      <td>1.2098</td>
-      <td>3.297311</td>
-      <td>1308.191805</td>
-      <td>-0.496918</td>
-      <td>56</td>
     </tr>
     <tr>
       <th>...</th>
@@ -756,54 +759,54 @@ For this we will use the <code class="docutils literal notranslate"><span class=
       <td>...</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>Li4P2O7</td>
+      <th>392</th>
+      <td>NaV2O4</td>
+      <td>15</td>
+      <td>0.5774</td>
+      <td>3.562472</td>
+      <td>176.072462</td>
+      <td>-2.413525</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>259</th>
+      <td>Na5GeP3</td>
+      <td>14</td>
+      <td>1.0516</td>
+      <td>2.351359</td>
+      <td>792.389531</td>
+      <td>-0.361215</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>302</th>
+      <td>Na2Al2As3</td>
+      <td>14</td>
+      <td>1.2098</td>
+      <td>3.297311</td>
+      <td>1308.191805</td>
+      <td>-0.496918</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Li3AlF6</td>
+      <td>15</td>
+      <td>7.6904</td>
+      <td>2.608288</td>
+      <td>618.030369</td>
+      <td>-3.499978</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>K3Nb7O19</td>
       <td>2</td>
-      <td>5.6175</td>
-      <td>2.247061</td>
-      <td>298.116456</td>
-      <td>-2.752085</td>
-      <td>26</td>
-    </tr>
-    <tr>
-      <th>232</th>
-      <td>Na3InAs2</td>
-      <td>14</td>
-      <td>0.1482</td>
-      <td>3.746589</td>
-      <td>1182.956601</td>
-      <td>-0.438034</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <th>152</th>
-      <td>Na3InS3</td>
-      <td>15</td>
-      <td>2.7744</td>
-      <td>2.566190</td>
-      <td>724.687589</td>
-      <td>-1.267047</td>
-      <td>28</td>
-    </tr>
-    <tr>
-      <th>73</th>
-      <td>LiAsO3</td>
-      <td>15</td>
-      <td>2.9619</td>
-      <td>3.456178</td>
-      <td>249.569220</td>
-      <td>-1.960238</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>494</th>
-      <td>Na3InP2</td>
-      <td>14</td>
-      <td>0.6425</td>
-      <td>3.013490</td>
-      <td>1083.268498</td>
-      <td>-0.380711</td>
-      <td>48</td>
+      <td>2.1120</td>
+      <td>3.912657</td>
+      <td>1819.204056</td>
+      <td>-2.976314</td>
+      <td>116</td>
     </tr>
   </tbody>
 </table>

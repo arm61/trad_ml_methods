@@ -3,8 +3,7 @@
 Welcome to the material for the "Traditional Machine Learning Methods" of the LENS ML School.
 
 You can find the lecture slides that were used to introduce this subject area [online here](https://mccluskey.scot/talks/trad_ml_methods).
-During the working, it is suggested that you work through the material here. 
-You can work along using one of these systems: 
+During the exercises and if you want to interact with the code, it is suggested that you work through one of these systems: 
 - [Colab](https://colab.research.google.com/)
 - [MyBinder](https://mybinder.org/v2/gh/arm61/trad_ml_methods/HEAD)
 

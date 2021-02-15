@@ -1,5 +1,6 @@
 # Bayes' theorem
 
+Before you continue this section, I recommend watching the video from [3blue1brown on YouTube](https://www.youtube.com/watch?v=HZGCoVF3YvM) which gives a fantastic introduction to Bayesianism. 
 The main idea behind all Bayesian modelling is that our prior knowledge about aspects of the model can, and should, inform our results.
 This can take a variety of forms, it could be our understanding of certain parameter in our model or, as introduced previously, it may be our certainty about the model itself.
 Bayes' theorem is generally written as follows,

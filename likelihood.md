@@ -18,5 +18,5 @@ Note that the values of $x_0$ and $b$ are constrained to the optimal solutions f
   <img src="https://github.com/arm61/trad_ml_methods/raw/main/likelihood_plot.png" alt="An example of a likelihood function, where $A$ and $\gamma$ are varied." class="bg-primary" width="500px">
 </center<br>
 
-It is clear that the likelihood is maximised at the optimised solutions for $A$ and $\gamma$ found previously, and indeed the likelihood appears to be Gaussian in nature.
+It is clear that the likelihood is maximised at the optimised solutions for $A$ and $\gamma$ found previously, and indeed the shape of the likelihood appears to be Gaussian in nature.
 These aspects will become important later in the course.

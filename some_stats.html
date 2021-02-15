@@ -354,7 +354,8 @@ Therefore, we will <em>quickly</em> introduce some basics of statistical modelli
 <p>The majority of neutron scattering (both elastic and inelastic) data is analysed through a model-dependent approach.
 This is where some model is proposed that we can produce some model data from, the model has some parameters that we refine to get the best agreement between the model data and our experimental data.
 Consider the fitting of different functional descriptions to quasi-elastic neutron scattering (QENS) data.
-Below, we read in and plot some <a class="reference internal" href="example.html"><span class="doc std std-doc">example</span></a> QENS data.</p>
+Below, we read in and plot some <a class="reference internal" href="example.html"><span class="doc std std-doc">example</span></a> QENS data.
+This file can be obtained <a class="reference external" href="https://raw.githubusercontent.com/arm61/trad_ml_methods/main/lorentzian.txt">here</a>, but it should be accessible on Colab and MyBinder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;lorentzian.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
